@@ -3,11 +3,20 @@ import { readFileSync } from "node:fs";
 import pruneSourceImages from "./integrations/prune-source-images.mjs";
 
 const cfg = JSON.parse(readFileSync(new URL("./site.config.json", import.meta.url), "utf-8"));
-const base = cfg.site.basePath.replace(/\/$/, "");
+const repository = process.env.GITHUB_REPOSITORY;
+const isGitHubPages = process.env.GITHUB_ACTIONS === "true" && Boolean(repository);
+const [repositoryOwner, repositoryName] = (repository || "").split("/");
+const isAccountPages = repositoryName?.toLowerCase() === `${repositoryOwner?.toLowerCase()}.github.io`;
+const base = isGitHubPages
+  ? (isAccountPages ? "" : `/${repositoryName}`)
+  : cfg.site.basePath.replace(/\/$/, "");
+const site = isGitHubPages
+  ? `https://${repositoryOwner}.github.io`
+  : cfg.site.domain.replace(/\/$/, "");
 
 // https://astro.build/config
 export default defineConfig({
-  site: cfg.site.domain.replace(/\/$/, ""),
+  site,
   base: base || "/",
   trailingSlash: "always",
   build: { format: "directory", assets: "assets/_a" },

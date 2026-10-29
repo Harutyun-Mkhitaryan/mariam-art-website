@@ -12,8 +12,10 @@ export const LOCALES = SITE.locales as readonly string[];
 export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE = SITE.defaultLocale;
 
-export const BASE = SITE.basePath.replace(/\/$/, "");
-export const DOMAIN = SITE.domain.replace(/\/$/, "");
+// Astro's build base changes automatically for GitHub Pages project sites;
+// on Cloudflare Pages it remains `/`, so these helpers work in both hosts.
+export const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+export const DOMAIN = (import.meta.env.SITE || SITE.domain).replace(/\/$/, "");
 
 export const YEAR = new Date().getFullYear();
 export const TODAY = new Date().toISOString().slice(0, 10);
