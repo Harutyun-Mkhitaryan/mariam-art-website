@@ -22,6 +22,7 @@
   function applyTheme(name) {
     name = name === 'light' ? 'light' : 'dark';
     root.setAttribute('data-theme', name);
+    try { localStorage.setItem('mariam-art-theme', name); } catch (e) {}
     var meta = $('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', name === 'light' ? '#F7F2E9' : '#100F0D');
     $$('[data-theme-toggle]').forEach(function (b) {
