@@ -1,0 +1,15 @@
+---
+import { SITE, url } from "../lib/config";
+import { tr } from "../lib/i18n";
+import branch from "../images/branch.png";
+
+interface Props { locale: string; class?: string }
+const { locale, class: cls = "" } = Astro.props;
+---
+<a class:list={["logo", cls]} href={url(locale)} aria-label={tr(locale, "a11y.logoHome")}>
+  <img class="logo__branch" src={branch.src} alt="" width={branch.width} height={branch.height} />
+  <span class="logo__text">
+    <span class="logo__name">{SITE.name}</span>
+    <span class="logo__studio">{tr(locale, "brand.studio")}</span>
+  </span>
+</a>

@@ -1,0 +1,1529 @@
+{
+  "_howto": [
+    "Каталог и обработанные изображения собраны скриптом scripts/import-gallery.mjs.",
+    "Для следующего импорта передайте ему папку с нумерованными JPG/JPEG: node scripts/import-gallery.mjs \"путь/к/фото\".",
+    "Скрипт проверяет, что каждое фото назначено ровно один раз, сжимает изображения в WebP и обновляет этот файл.",
+    "После импорта запустите npm run build.",
+    "Названия пока нейтральные и пронумерованы; можно заменить их на утверждённые названия работ."
+  ],
+  "categories": [
+    {
+      "id": "botanical",
+      "name": {
+        "en": "Botanical / Mixed Media",
+        "ru": "Ботаника / Смешанная техника",
+        "hy": "Բուսական / Խառը տեխնիկա"
+      },
+      "tagline": {
+        "en": "Nature in a new light",
+        "ru": "Природа в новом свете",
+        "hy": "Բնությունը նոր լույսի ներքո"
+      }
+    },
+    {
+      "id": "cups",
+      "name": {
+        "en": "Hand-painted Cups",
+        "ru": "Расписные чашки",
+        "hy": "Ձեռքով նկարված բաժակներ"
+      },
+      "tagline": {
+        "en": "Art for everyday rituals",
+        "ru": "Искусство для повседневных ритуалов",
+        "hy": "Արվեստ՝ առօրյա ծեսերի համար"
+      }
+    },
+    {
+      "id": "clothing",
+      "name": {
+        "en": "Hand-painted Clothing",
+        "ru": "Расписная одежда",
+        "hy": "Ձեռքով նկարված հագուստ"
+      },
+      "tagline": {
+        "en": "Art you can wear",
+        "ru": "Искусство, которое можно носить",
+        "hy": "Արվեստ, որը կարելի է կրել"
+      }
+    },
+    {
+      "id": "portraits",
+      "name": {
+        "en": "Portraits",
+        "ru": "Портреты",
+        "hy": "Դիմանկարներ"
+      },
+      "tagline": {
+        "en": "People and studies",
+        "ru": "Люди и наброски",
+        "hy": "Մարդիկ և էսքիզներ"
+      }
+    },
+    {
+      "id": "drawings",
+      "name": {
+        "en": "Drawings",
+        "ru": "Рисунки",
+        "hy": "Նկարներ"
+      },
+      "tagline": {
+        "en": "Studies in line and light",
+        "ru": "Линия, форма и свет",
+        "hy": "Գիծ, ձև և լույս"
+      }
+    },
+    {
+      "id": "landscapes",
+      "name": {
+        "en": "Landscapes",
+        "ru": "Пейзажи",
+        "hy": "Բնանկարներ"
+      },
+      "tagline": {
+        "en": "Places and open skies",
+        "ru": "Места и простор",
+        "hy": "Վայրեր և բաց երկինք"
+      }
+    },
+    {
+      "id": "oil",
+      "name": {
+        "en": "Paintings",
+        "ru": "Живопись",
+        "hy": "Գեղանկարներ"
+      },
+      "tagline": {
+        "en": "Colour and composition",
+        "ru": "Цвет и композиция",
+        "hy": "Գույն և հորինվածք"
+      }
+    }
+  ],
+  "items": [
+    {
+      "slug": "botanical-01",
+      "category": "botanical",
+      "images": {
+        "main": "botanical-01.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Mixed Media 01",
+        "ru": "Смешанная техника 01",
+        "hy": "Խառը տեխնիկա 01"
+      },
+      "description": {
+        "en": "This original artwork, Mixed Media 01, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Смешанная техника 01» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Խառը տեխնիկա 01» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "botanical-02",
+      "category": "botanical",
+      "images": {
+        "main": "botanical-02.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Mixed Media 02",
+        "ru": "Смешанная техника 02",
+        "hy": "Խառը տեխնիկա 02"
+      },
+      "description": {
+        "en": "This original artwork, Mixed Media 02, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Смешанная техника 02» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Խառը տեխնիկա 02» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "botanical-03",
+      "category": "botanical",
+      "images": {
+        "main": "botanical-03.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Mixed Media 03",
+        "ru": "Смешанная техника 03",
+        "hy": "Խառը տեխնիկա 03"
+      },
+      "description": {
+        "en": "This original artwork, Mixed Media 03, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Смешанная техника 03» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Խառը տեխնիկա 03» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "cups-01",
+      "category": "cups",
+      "featured": true,
+      "images": {
+        "main": "cups-01.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Cup 01",
+        "ru": "Чашка 01",
+        "hy": "Բաժակ 01"
+      },
+      "description": {
+        "en": "This original artwork, Cup 01, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Чашка 01» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բաժակ 01» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "cups-02",
+      "category": "cups",
+      "images": {
+        "main": "cups-02.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Cup 02",
+        "ru": "Чашка 02",
+        "hy": "Բաժակ 02"
+      },
+      "description": {
+        "en": "This original artwork, Cup 02, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Чашка 02» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բաժակ 02» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "cups-03",
+      "category": "cups",
+      "images": {
+        "main": "cups-03.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Cup 03",
+        "ru": "Чашка 03",
+        "hy": "Բաժակ 03"
+      },
+      "description": {
+        "en": "This original artwork, Cup 03, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Чашка 03» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բաժակ 03» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "cups-04",
+      "category": "cups",
+      "images": {
+        "main": "cups-04.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Cup 04",
+        "ru": "Чашка 04",
+        "hy": "Բաժակ 04"
+      },
+      "description": {
+        "en": "This original artwork, Cup 04, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Чашка 04» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բաժակ 04» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "cups-05",
+      "category": "cups",
+      "images": {
+        "main": "cups-05.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Cup 05",
+        "ru": "Чашка 05",
+        "hy": "Բաժակ 05"
+      },
+      "description": {
+        "en": "This original artwork, Cup 05, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Чашка 05» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բաժակ 05» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "cups-06",
+      "category": "cups",
+      "images": {
+        "main": "cups-06.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Cup 06",
+        "ru": "Чашка 06",
+        "hy": "Բաժակ 06"
+      },
+      "description": {
+        "en": "This original artwork, Cup 06, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Чашка 06» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բաժակ 06» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "cups-07",
+      "category": "cups",
+      "images": {
+        "main": "cups-07.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Cup 07",
+        "ru": "Чашка 07",
+        "hy": "Բաժակ 07"
+      },
+      "description": {
+        "en": "This original artwork, Cup 07, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Чашка 07» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բաժակ 07» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "cups-08",
+      "category": "cups",
+      "images": {
+        "main": "cups-08.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Cup 08",
+        "ru": "Чашка 08",
+        "hy": "Բաժակ 08"
+      },
+      "description": {
+        "en": "This original artwork, Cup 08, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Чашка 08» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բաժակ 08» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "cups-09",
+      "category": "cups",
+      "images": {
+        "main": "cups-09.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Cup 09",
+        "ru": "Чашка 09",
+        "hy": "Բաժակ 09"
+      },
+      "description": {
+        "en": "This original artwork, Cup 09, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Чашка 09» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բաժակ 09» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "cups-10",
+      "category": "cups",
+      "images": {
+        "main": "cups-10.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Cup 10",
+        "ru": "Чашка 10",
+        "hy": "Բաժակ 10"
+      },
+      "description": {
+        "en": "This original artwork, Cup 10, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Чашка 10» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բաժակ 10» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "cups-11",
+      "category": "cups",
+      "images": {
+        "main": "cups-11.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Cup 11",
+        "ru": "Чашка 11",
+        "hy": "Բաժակ 11"
+      },
+      "description": {
+        "en": "This original artwork, Cup 11, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Чашка 11» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բաժակ 11» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "cups-12",
+      "category": "cups",
+      "images": {
+        "main": "cups-12.webp",
+        "details": [
+          "cups-12-detail-1.webp"
+        ]
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Cup 12",
+        "ru": "Чашка 12",
+        "hy": "Բաժակ 12"
+      },
+      "description": {
+        "en": "This original artwork, Cup 12, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Чашка 12» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բաժակ 12» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "clothing-01",
+      "category": "clothing",
+      "featured": true,
+      "images": {
+        "main": "clothing-01.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Clothing 01",
+        "ru": "Одежда 01",
+        "hy": "Հագուստ 01"
+      },
+      "description": {
+        "en": "This original artwork, Clothing 01, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Одежда 01» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Հագուստ 01» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "clothing-02",
+      "category": "clothing",
+      "images": {
+        "main": "clothing-02.webp",
+        "details": [
+          "clothing-02-detail-1.webp"
+        ]
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Clothing 02",
+        "ru": "Одежда 02",
+        "hy": "Հագուստ 02"
+      },
+      "description": {
+        "en": "This original artwork, Clothing 02, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Одежда 02» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Հագուստ 02» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-01",
+      "category": "portraits",
+      "featured": true,
+      "images": {
+        "main": "portraits-01.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 01",
+        "ru": "Портрет 01",
+        "hy": "Դիմանկար 01"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 01, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 01» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 01» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-02",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-02.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 02",
+        "ru": "Портрет 02",
+        "hy": "Դիմանկար 02"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 02, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 02» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 02» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-03",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-03.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 03",
+        "ru": "Портрет 03",
+        "hy": "Դիմանկար 03"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 03, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 03» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 03» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-04",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-04.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 04",
+        "ru": "Портрет 04",
+        "hy": "Դիմանկար 04"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 04, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 04» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 04» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-05",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-05.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 05",
+        "ru": "Портрет 05",
+        "hy": "Դիմանկար 05"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 05, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 05» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 05» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-06",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-06.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 06",
+        "ru": "Портрет 06",
+        "hy": "Դիմանկար 06"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 06, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 06» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 06» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-07",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-07.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 07",
+        "ru": "Портрет 07",
+        "hy": "Դիմանկար 07"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 07, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 07» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 07» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-08",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-08.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 08",
+        "ru": "Портрет 08",
+        "hy": "Դիմանկար 08"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 08, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 08» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 08» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-09",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-09.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 09",
+        "ru": "Портрет 09",
+        "hy": "Դիմանկար 09"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 09, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 09» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 09» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-10",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-10.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 10",
+        "ru": "Портрет 10",
+        "hy": "Դիմանկար 10"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 10, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 10» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 10» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-11",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-11.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 11",
+        "ru": "Портрет 11",
+        "hy": "Դիմանկար 11"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 11, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 11» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 11» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-12",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-12.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 12",
+        "ru": "Портрет 12",
+        "hy": "Դիմանկար 12"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 12, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 12» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 12» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-13",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-13.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 13",
+        "ru": "Портрет 13",
+        "hy": "Դիմանկար 13"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 13, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 13» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 13» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-14",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-14.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 14",
+        "ru": "Портрет 14",
+        "hy": "Դիմանկար 14"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 14, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 14» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 14» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-15",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-15.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 15",
+        "ru": "Портрет 15",
+        "hy": "Դիմանկար 15"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 15, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 15» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 15» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-16",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-16.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 16",
+        "ru": "Портрет 16",
+        "hy": "Դիմանկար 16"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 16, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 16» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 16» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-17",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-17.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 17",
+        "ru": "Портрет 17",
+        "hy": "Դիմանկար 17"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 17, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 17» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 17» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "portraits-18",
+      "category": "portraits",
+      "images": {
+        "main": "portraits-18.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Portrait 18",
+        "ru": "Портрет 18",
+        "hy": "Դիմանկար 18"
+      },
+      "description": {
+        "en": "This original artwork, Portrait 18, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Портрет 18» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Դիմանկար 18» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-01",
+      "category": "drawings",
+      "featured": true,
+      "images": {
+        "main": "drawings-01.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 01",
+        "ru": "Рисунок 01",
+        "hy": "Նկար 01"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 01, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 01» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 01» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-02",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-02.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 02",
+        "ru": "Рисунок 02",
+        "hy": "Նկար 02"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 02, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 02» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 02» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-03",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-03.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 03",
+        "ru": "Рисунок 03",
+        "hy": "Նկար 03"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 03, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 03» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 03» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-04",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-04.webp",
+        "details": [
+          "drawings-04-detail-1.webp"
+        ]
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 04",
+        "ru": "Рисунок 04",
+        "hy": "Նկար 04"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 04, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 04» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 04» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-05",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-05.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 05",
+        "ru": "Рисунок 05",
+        "hy": "Նկար 05"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 05, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 05» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 05» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-06",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-06.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 06",
+        "ru": "Рисунок 06",
+        "hy": "Նկար 06"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 06, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 06» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 06» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-07",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-07.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 07",
+        "ru": "Рисунок 07",
+        "hy": "Նկար 07"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 07, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 07» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 07» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-08",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-08.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 08",
+        "ru": "Рисунок 08",
+        "hy": "Նկար 08"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 08, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 08» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 08» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-09",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-09.webp",
+        "details": [
+          "drawings-09-detail-1.webp"
+        ]
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 09",
+        "ru": "Рисунок 09",
+        "hy": "Նկար 09"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 09, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 09» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 09» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-10",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-10.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 10",
+        "ru": "Рисунок 10",
+        "hy": "Նկար 10"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 10, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 10» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 10» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-11",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-11.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 11",
+        "ru": "Рисунок 11",
+        "hy": "Նկար 11"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 11, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 11» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 11» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-12",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-12.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 12",
+        "ru": "Рисунок 12",
+        "hy": "Նկար 12"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 12, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 12» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 12» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-13",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-13.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 13",
+        "ru": "Рисунок 13",
+        "hy": "Նկար 13"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 13, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 13» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 13» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-14",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-14.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 14",
+        "ru": "Рисунок 14",
+        "hy": "Նկար 14"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 14, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 14» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 14» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-15",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-15.webp",
+        "details": [
+          "drawings-15-detail-1.webp"
+        ]
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 15",
+        "ru": "Рисунок 15",
+        "hy": "Նկար 15"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 15, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 15» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 15» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-16",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-16.webp",
+        "details": [
+          "drawings-16-detail-1.webp"
+        ]
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 16",
+        "ru": "Рисунок 16",
+        "hy": "Նկար 16"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 16, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 16» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 16» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-17",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-17.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 17",
+        "ru": "Рисунок 17",
+        "hy": "Նկար 17"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 17, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 17» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 17» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-18",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-18.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 18",
+        "ru": "Рисунок 18",
+        "hy": "Նկար 18"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 18, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 18» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 18» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-19",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-19.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 19",
+        "ru": "Рисунок 19",
+        "hy": "Նկար 19"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 19, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 19» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 19» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-20",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-20.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 20",
+        "ru": "Рисунок 20",
+        "hy": "Նկար 20"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 20, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 20» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 20» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-21",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-21.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 21",
+        "ru": "Рисунок 21",
+        "hy": "Նկար 21"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 21, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 21» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 21» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-22",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-22.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 22",
+        "ru": "Рисунок 22",
+        "hy": "Նկար 22"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 22, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 22» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 22» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-23",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-23.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 23",
+        "ru": "Рисунок 23",
+        "hy": "Նկար 23"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 23, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 23» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 23» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-24",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-24.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 24",
+        "ru": "Рисунок 24",
+        "hy": "Նկար 24"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 24, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 24» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 24» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-25",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-25.webp",
+        "details": [
+          "drawings-25-detail-1.webp"
+        ]
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 25",
+        "ru": "Рисунок 25",
+        "hy": "Նկար 25"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 25, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 25» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 25» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-26",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-26.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 26",
+        "ru": "Рисунок 26",
+        "hy": "Նկար 26"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 26, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 26» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 26» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-27",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-27.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 27",
+        "ru": "Рисунок 27",
+        "hy": "Նկար 27"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 27, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 27» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 27» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "drawings-28",
+      "category": "drawings",
+      "images": {
+        "main": "drawings-28.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Drawing 28",
+        "ru": "Рисунок 28",
+        "hy": "Նկար 28"
+      },
+      "description": {
+        "en": "This original artwork, Drawing 28, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Рисунок 28» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Նկար 28» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "landscapes-01",
+      "category": "landscapes",
+      "images": {
+        "main": "landscapes-01.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Landscape 01",
+        "ru": "Пейзаж 01",
+        "hy": "Բնանկար 01"
+      },
+      "description": {
+        "en": "This original artwork, Landscape 01, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Пейзаж 01» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բնանկար 01» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "landscapes-02",
+      "category": "landscapes",
+      "images": {
+        "main": "landscapes-02.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Landscape 02",
+        "ru": "Пейзаж 02",
+        "hy": "Բնանկար 02"
+      },
+      "description": {
+        "en": "This original artwork, Landscape 02, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Пейзаж 02» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բնանկար 02» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "landscapes-03",
+      "category": "landscapes",
+      "images": {
+        "main": "landscapes-03.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Landscape 03",
+        "ru": "Пейзаж 03",
+        "hy": "Բնանկար 03"
+      },
+      "description": {
+        "en": "This original artwork, Landscape 03, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Пейзаж 03» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Բնանկար 03» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "oil-01",
+      "category": "oil",
+      "featured": true,
+      "images": {
+        "main": "oil-01.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Painting 01",
+        "ru": "Работа 01",
+        "hy": "Գեղանկար 01"
+      },
+      "description": {
+        "en": "This original artwork, Painting 01, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Работа 01» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Գեղանկար 01» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "oil-02",
+      "category": "oil",
+      "images": {
+        "main": "oil-02.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Painting 02",
+        "ru": "Работа 02",
+        "hy": "Գեղանկար 02"
+      },
+      "description": {
+        "en": "This original artwork, Painting 02, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Работа 02» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Գեղանկար 02» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "oil-03",
+      "category": "oil",
+      "images": {
+        "main": "oil-03.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Painting 03",
+        "ru": "Работа 03",
+        "hy": "Գեղանկար 03"
+      },
+      "description": {
+        "en": "This original artwork, Painting 03, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Работа 03» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Գեղանկար 03» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "oil-04",
+      "category": "oil",
+      "images": {
+        "main": "oil-04.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Painting 04",
+        "ru": "Работа 04",
+        "hy": "Գեղանկար 04"
+      },
+      "description": {
+        "en": "This original artwork, Painting 04, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Работа 04» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Գեղանկար 04» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "oil-05",
+      "category": "oil",
+      "images": {
+        "main": "oil-05.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Painting 05",
+        "ru": "Работа 05",
+        "hy": "Գեղանկար 05"
+      },
+      "description": {
+        "en": "This original artwork, Painting 05, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Работа 05» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Գեղանկար 05» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "oil-06",
+      "category": "oil",
+      "images": {
+        "main": "oil-06.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Painting 06",
+        "ru": "Работа 06",
+        "hy": "Գեղանկար 06"
+      },
+      "description": {
+        "en": "This original artwork, Painting 06, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Работа 06» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Գեղանկար 06» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "oil-07",
+      "category": "oil",
+      "images": {
+        "main": "oil-07.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Painting 07",
+        "ru": "Работа 07",
+        "hy": "Գեղանկար 07"
+      },
+      "description": {
+        "en": "This original artwork, Painting 07, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Работа 07» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Գեղանկար 07» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "oil-08",
+      "category": "oil",
+      "images": {
+        "main": "oil-08.webp",
+        "details": []
+      },
+      "updated": "2026-10-29",
+      "title": {
+        "en": "Painting 08",
+        "ru": "Работа 08",
+        "hy": "Գեղանկար 08"
+      },
+      "description": {
+        "en": "This original artwork, Painting 08, is presented in the Mariam-Art portfolio gallery.",
+        "ru": "Работа «Работа 08» входит в онлайн-галерею портфолио Mariam-Art.",
+        "hy": "«Գեղանկար 08» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+---
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import Picture from "../../components/Picture.astro";
+
+import { url } from "../../lib/config";
+import { localePaths, tr } from "../../lib/i18n";
+import { breadcrumbLd, simpleLd } from "../../lib/seo";
+
+export const getStaticPaths = () => localePaths();
+
+const { locale } = Astro.params as { locale: string };
+const steps = [1, 2, 3, 4];
+const studio = [1, 2, 3];
+const values = [1, 2, 3];
+---
+<Base
+  locale={locale}
+  page="about"
+  title={tr(locale, "about.title")}
+  description={tr(locale, "about.description")}
+  parts={["about"]}
+  ogType="profile"
+  extraLd={[
+    breadcrumbLd([
+      [tr(locale, "nav.home"), url(locale)],
+      [tr(locale, "nav.about"), url(locale, "about")],
+    ]),
+    simpleLd("AboutPage", locale, "about"),
+  ]}
+>
+  <section class="page-hero hero hero--short">
+    <div class="hero__media">
+      <Picture slot="about-hero-dark" alt={tr(locale, "about.heading2")} sizes="100vw" eager ratio={false} />
+    </div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <span class="side-label side-label--left">{tr(locale, "home.sideLeft")}</span>
+    <div class="wrap page-hero__inner">
+      <p class="eyebrow">{tr(locale, "about.eyebrow")}</p>
+      <h1 class="h1 mt-sm">{tr(locale, "about.heading1")}<br />{tr(locale, "about.heading2")}</h1>
+      <p class="body mt-lg measure">{tr(locale, "about.body")}</p>
+      <p class="script mt-lg">{tr(locale, "about.signature")}</p>
+      <hr class="rule rule--gold" style="width:130px" />
+      <p class="label-sm muted mt-xs">{tr(locale, "about.signatureSub")}</p>
+    </div>
+  </section>
+
+  <section class="banner section--alt">
+    <div class="banner__media"><Picture slot="banner-dark" sizes="60vw" ratio={false} /></div>
+    <div class="banner__scrim" aria-hidden="true"></div>
+    <div class="wrap banner__inner">
+      <div class="banner__quote">
+        <div class="banner__bar" aria-hidden="true"></div>
+        <blockquote>
+          <p class="quote">&ldquo;{tr(locale, "about.quote")}&rdquo;</p>
+          <footer class="label-sm muted mt-md">{tr(locale, "about.quoteAuthor")}</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="h2">{tr(locale, "about.processTitle")}</h2>
+        <span class="section-head__rule" aria-hidden="true"></span>
+        <p class="label muted">{tr(locale, "about.processKicker")}</p>
+      </div>
+      <p class="body-sm mt-md measure">{tr(locale, "about.processBody")}</p>
+      <div class="steps mt-xl">{
+        steps.map((i) => (
+          <div class="step reveal">
+            <div class="media media--ratio-4-3">
+              <Picture slot={`process-${i}`} alt={tr(locale, `about.step${i}Title`)} ratio={false}
+                       sizes="(min-width:1100px) 22vw, (min-width:640px) 45vw, 100vw" />
+            </div>
+            <div class="step__head mt-md"><span class="num">{String(i).padStart(2, "0")}</span>
+              <h3 class="h4">{tr(locale, `about.step${i}Title`)}</h3></div>
+            <p class="body-sm">{tr(locale, `about.step${i}Body`)}</p>
+          </div>
+        ))
+      }</div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow gold">{tr(locale, "home.valuesKicker")}</p>
+        <h2 class="h2 mt-sm">
+          {tr(locale, "home.valuesTitle1")} {tr(locale, "home.valuesTitle2")} {tr(locale, "home.valuesTitle3")}
+        </h2>
+        <p class="body mt-md measure">{tr(locale, "home.valuesBody")}</p>
+        <a class="btn mt-lg" href={url(locale, "gallery")}>
+          <span>{tr(locale, "about.cta")}</span><Icon name="arrow-right" /></a>
+      </div>
+      <div class="grid grid--3">{
+        values.map((i) => (
+          <div class="value-card">
+            <span class="num">{String(i).padStart(2, "0")}</span>
+            <h3 class="h4">{tr(locale, `home.value${i}Title`)}</h3>
+            <p class="body-sm">{tr(locale, `home.value${i}Body`)}</p>
+          </div>
+        ))
+      }</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split split--wide-media">
+      <div>
+        <p class="eyebrow gold">{tr(locale, "about.studioKicker")}</p>
+        <h2 class="h2 mt-sm">{tr(locale, "about.studioTitle")}</h2>
+        <p class="body mt-md measure-sm">{tr(locale, "about.studioBody")}</p>
+      </div>
+      <div class="grid grid--3">{
+        studio.map((i) => (
+          <div class="media media--ratio-4-3 reveal">
+            <Picture slot={`studio-${i}`} alt={tr(locale, "about.studioTitle")} ratio={false}
+                     sizes="(min-width:900px) 28vw, 100vw" />
+          </div>
+        ))
+      }</div>
+    </div>
+  </section>
+</Base>

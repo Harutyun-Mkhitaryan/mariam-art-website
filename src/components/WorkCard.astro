@@ -1,0 +1,37 @@
+---
+import Icon from "./Icon.astro";
+import ArtworkImage from "./ArtworkImage.astro";
+import { artworkUrl } from "../lib/config";
+import { field, tr } from "../lib/i18n";
+import { category, type Artwork } from "../lib/artworks";
+
+interface Props {
+  item: Artwork; locale: string; index: number;
+  variant?: "overlay" | "below";
+}
+const { item, locale, index, variant = "overlay" } = Astro.props;
+
+const cat = category(item.category);
+const title = field(item.title, locale);
+const sold = item.availability === "sold";
+const num = String(index).padStart(2, "0");
+---
+<a class={`card card--${variant} reveal`} data-card
+   data-category={item.category} data-year={item.year ?? ""}
+   data-order={index} data-title={title}
+   href={artworkUrl(locale, item.slug)}>
+  <div class="card__media">
+    <ArtworkImage item={item} locale={locale} class="media media--ratio-artwork" />
+    {sold && <span class="card__badge">{tr(locale, "artwork.sold")}</span>}
+  </div>
+  <div class="card__body">
+    <div class="card__text">
+      <span class="card__head">
+        <span class="num">{num}</span>
+        <span class="card__title">{title}</span>
+      </span>
+      <span class="card__meta">{field(cat.name, locale)}{item.year ? ` / ${item.year}` : ""}</span>
+    </div>
+    <Icon name="arrow-right" class="icon card__arrow" />
+  </div>
+</a>

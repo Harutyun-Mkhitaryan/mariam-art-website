@@ -1,0 +1,63 @@
+{
+  "_comment": "Единственный файл, который нужно отредактировать перед публикацией. Всё остальное подставится само.",
+  "site": {
+    "name": "Mariam-Art",
+    "shortName": "Mariam-Art",
+    "tagline": "Art Studio",
+    "artist": "Mariam",
+    "founded": "2019",
+    "domain": "https://mariam-art.pages.dev",
+    "_domain_note": "Временный адрес Cloudflare Pages. После покупки домена впишите сюда https://mariam-art.com — canonical, hreflang, sitemap и OG обновятся во всех страницах при следующей сборке.",
+    "basePath": "",
+    "_basePath_note": "Для GitHub Pages в подпапке укажите /имя-репозитория (например /mariam-art). Для Cloudflare Pages и своего домена оставьте пустым.",
+    "defaultLocale": "en",
+    "locales": [
+      "hy",
+      "ru",
+      "en"
+    ],
+    "themeDefault": "system"
+  },
+  "contact": {
+    "email": "studio.mariam.art@gmail.com",
+    "phone": "+374 98 828849",
+    "phoneHref": "+37498828849",
+    "whatsapp": "37498828849",
+    "city": "Yerevan",
+    "country": "Armenia",
+    "countryCode": "AM",
+    "addressNote": "By appointment only",
+    "hours": "Mon – Fri   10:00 – 18:00",
+    "responseTime": "Replies within 24 hours",
+    "mapQuery": "Yerevan, Armenia"
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/__art__mariam?dlrf=MTFqYjMzMXZwcHF3ZQ==",
+    "facebook": "https://www.facebook.com/share/19eUhYfgc8/",
+    "whatsapp": "https://wa.me/37498828849",
+    "pinterest": ""
+  },
+  "forms": {
+    "provider": "web3forms",
+    "web3formsAccessKey": "35796047-2460-451a-b613-38d4265aa7d2",
+    "_key_note": "Получите бесплатный ключ на https://web3forms.com — вставьте сюда, форма заработает сразу, без бэкенда.",
+    "redirectAfterSend": true,
+    "botcheck": true
+  },
+  "analytics": {
+    "enabled": false,
+    "provider": "cloudflare",
+    "cloudflareToken": "",
+    "_note": "Когда переедете на Cloudflare: enabled=true и вставьте token из Web Analytics. Cookie-баннер не нужен — сервис не ставит cookie."
+  },
+  "seo": {
+    "twitterHandle": "",
+    "googleSiteVerification": "",
+    "_googleSiteVerification_note": "Google Search Console → «Способ HTML-тег»: скопируйте сюда только значение content, без всего тега. Пусто = метатег не выводится.",
+    "bingSiteVerification": "",
+    "_bingSiteVerification_note": "Bing Webmaster Tools → «Meta tag»: значение content от msvalidate.01.",
+    "ogImage": "/assets/img/og/og-default.jpg",
+    "themeColorDark": "#0D0C0A",
+    "themeColorLight": "#F5EFE5"
+  }
+}

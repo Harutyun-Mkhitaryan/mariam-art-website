@@ -1,0 +1,16 @@
+---
+import Icon from "./Icon.astro";
+import { SOCIAL } from "../lib/config";
+import { tr } from "../lib/i18n";
+
+interface Props { locale: string }
+const { locale } = Astro.props;
+const LABELS: Record<string, string> = {
+  instagram: "Instagram", facebook: "Facebook", whatsapp: "WhatsApp", pinterest: "Pinterest",
+};
+const links = Object.entries(LABELS).filter(([key]) => SOCIAL[key]);
+---
+{links.map(([key, label]) => (
+  <a class="social-btn" href={SOCIAL[key]} target="_blank" rel="noopener noreferrer me"
+     aria-label={`${label} — ${tr(locale, "a11y.externalLink")}`}><Icon name={key} /></a>
+))}

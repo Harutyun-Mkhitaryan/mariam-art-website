@@ -1,0 +1,140 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SearchOverlay from "../components/SearchOverlay.astro";
+
+import {
+  ANALYTICS, BASE, DEFAULT_LOCALE, LOCALES, SEO, SITE,
+  absolute, asset, url,
+} from "../lib/config";
+import { DICTS, localeMeta, tr } from "../lib/i18n";
+import { orgLd, websiteLd } from "../lib/seo";
+import { responsive } from "../lib/images";
+
+import "../styles/styles.css";
+import mainScript from "../scripts/main.js?url";
+import searchScript from "../scripts/search.js?url";
+import ogDark from "../images/og-dark.jpg";
+
+interface Props {
+  locale: string;
+  page: string;
+  title: string;
+  description: string;
+  parts?: string[];
+  extraLd?: Record<string, unknown>[];
+  ogType?: string;
+  noindex?: boolean;
+}
+const {
+  locale, page, title, description, parts = [],
+  extraLd = [], ogType = "website", noindex = false,
+} = Astro.props;
+
+const meta = localeMeta(locale);
+const canonical = absolute(url(locale, ...parts));
+const ogImage = absolute(ogDark.src);
+const portrait = await responsive("about-portrait");
+
+const jsonLd = [
+  websiteLd(locale),
+  orgLd(locale, portrait ? absolute(portrait.src) : ogImage),
+  ...extraLd,
+];
+
+/** Everything main.js and search.js need to know, resolved at build time. */
+const siteJs = {
+  base: BASE,
+  locale,
+  searchIndex: `${BASE}/assets/search/${locale}.json`,
+  t: {
+    ...DICTS[locale].search,
+    ...Object.fromEntries(
+      ["sending", "successTitle", "successBody", "errorTitle", "errorBody", "errEmail"]
+        .map((k) => [k, DICTS[locale].contact[k]])),
+    counter: DICTS[locale].gallery.counter,
+    linkCopied: DICTS[locale].artwork.linkCopied,
+    themeDark: DICTS[locale].nav.themeDark,
+    themeLight: DICTS[locale].nav.themeLight,
+  },
+};
+
+/**
+ * The fonts are self-hosted (public/assets/fonts, built by
+ * scripts/prepare-fonts.mjs), so there is no request to fonts.googleapis.com.
+ * unicode-range keeps the browser from fetching subsets the page never uses;
+ * these two per locale are the ones the first screen always needs, so they are
+ * preloaded rather than discovered after the stylesheet parses.
+ */
+const PRELOAD: Record<string, string[]> = {
+  en: ["playfair-display-latin-wght-normal.woff2", "cormorant-garamond-latin-wght-normal.woff2"],
+  ru: ["playfair-display-cyrillic-wght-normal.woff2", "cormorant-garamond-cyrillic-wght-normal.woff2"],
+  hy: ["noto-serif-armenian-armenian-wght-normal.woff2", "noto-sans-armenian-armenian-wght-normal.woff2"],
+};
+---
+<!doctype html>
+<html lang={locale} dir={meta.dir} prefix="og: https://ogp.me/ns#"
+      style={`--theme-light-leaf: url("${asset("theme/light-leaf.webp")}")`}>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
+<link rel="canonical" href={canonical} />
+{LOCALES.map((l) => (
+  <link rel="alternate" hreflang={l} href={absolute(url(l, ...parts))} />
+))}
+<link rel="alternate" hreflang="x-default" href={absolute(url(DEFAULT_LOCALE, ...parts))} />
+<meta name="theme-color" content={SEO.themeColorDark} />
+<link rel="preload" as="image" href={asset("theme/light-leaf.webp")} fetchpriority="low" />
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content={meta.ogLocale} />
+{LOCALES.filter((l) => l !== locale).map((l) => (
+  <meta property="og:locale:alternate" content={localeMeta(l).ogLocale} />
+))}
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={`${SITE.name} — ${SITE.tagline}`} />
+<meta name="twitter:card" content="summary_large_image" />
+{SEO.twitterHandle && <meta name="twitter:site" content={SEO.twitterHandle} />}
+{SEO.googleSiteVerification && (
+  <meta name="google-site-verification" content={SEO.googleSiteVerification} />
+)}
+{SEO.bingSiteVerification && <meta name="msvalidate.01" content={SEO.bingSiteVerification} />}
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<link rel="icon" href={asset("favicon.svg")} type="image/svg+xml" />
+<link rel="apple-touch-icon" href={asset("icon-180.png")} />
+<link rel="manifest" href={`${BASE}/site.webmanifest`} />
+<link rel="stylesheet" href={asset("fonts/fonts.css")} />
+{PRELOAD[locale].map((f) => (
+  <link rel="preload" as="font" type="font/woff2" href={asset("fonts/" + f)} crossorigin />
+))}
+<script is:inline src={asset("theme-init.js")}></script>
+{jsonLd.map((block) => (
+  <script type="application/ld+json" set:html={JSON.stringify(block)} />
+))}
+{ANALYTICS.enabled && ANALYTICS.cloudflareToken && (
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: ANALYTICS.cloudflareToken })}></script>
+)}
+</head>
+<body data-page={page}>
+<script is:inline type="application/json" id="site-config"
+        set:html={JSON.stringify(siteJs).replace(/</g, "\\u003c")}></script>
+<a class="skip-link" href="#main">{tr(locale, "nav.skipToContent")}</a>
+<Header locale={locale} page={page} parts={parts} />
+<main id="main"><slot /></main>
+<Footer locale={locale} />
+<SearchOverlay locale={locale} />
+<script src={mainScript} is:inline defer></script>
+<script src={searchScript} is:inline defer></script>
+</body>
+</html>

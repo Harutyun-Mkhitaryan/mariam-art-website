@@ -1,0 +1,31 @@
+---
+/**
+ * Language-aware entry page. A static host cannot negotiate Accept-Language,
+ * so the choice is made here: a remembered preference first, then the browser's
+ * list, then the default locale. The <meta refresh> and the link list keep it
+ * working without JavaScript and for crawlers.
+ */
+import { BASE, DEFAULT_LOCALE, LOCALES, SITE, absolute, asset, url } from "../lib/config";
+import { localeMeta } from "../lib/i18n";
+
+const target = url(DEFAULT_LOCALE);
+---
+<!doctype html>
+<html lang={DEFAULT_LOCALE} data-base={BASE} data-default-locale={DEFAULT_LOCALE}
+      data-locales={LOCALES.join(",")}>
+<head>
+<meta charset="utf-8" />
+<title>{SITE.name} — {SITE.tagline}</title>
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href={absolute(target)} />
+{LOCALES.map((l) => <link rel="alternate" hreflang={l} href={absolute(url(l))} />)}
+<link rel="alternate" hreflang="x-default" href={absolute(target)} />
+<script is:inline src={asset("locale-redirect.js")}></script>
+</head>
+<body>
+<p>Redirecting to {SITE.name}…</p>
+<ul>{LOCALES.map((l) => (
+  <li><a href={url(l)} hreflang={l}>{localeMeta(l).name}</a></li>
+))}</ul>
+</body>
+</html>

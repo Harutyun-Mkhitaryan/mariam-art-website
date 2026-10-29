@@ -1,0 +1,46 @@
+---
+import Icon from "./Icon.astro";
+import LangSwitcher from "./LangSwitcher.astro";
+import Logo from "./Logo.astro";
+import Nav from "./Nav.astro";
+import SocialButtons from "./SocialButtons.astro";
+import ThemeSwitch from "./ThemeSwitch.astro";
+import { tr } from "../lib/i18n";
+
+interface Props { locale: string; page: string; parts?: string[] }
+const { locale, page, parts = [] } = Astro.props;
+---
+<header class="header" data-header>
+  <div class="wrap header__inner">
+    <Logo locale={locale} />
+    <Nav locale={locale} page={page} />
+    <div class="utils">
+      <div class="utils__desktop utils" style="gap:inherit">
+        <button class="icon-btn" type="button" data-search-open
+                aria-label={tr(locale, "search.open")}><Icon name="search" /></button>
+        <span class="utils__divider" aria-hidden="true"></span>
+        <LangSwitcher locale={locale} parts={parts} />
+        <span class="utils__divider" aria-hidden="true"></span>
+        <ThemeSwitch locale={locale} />
+      </div>
+      <button class="icon-btn burger" type="button" data-drawer-open aria-expanded="false"
+              aria-controls="drawer" aria-label={tr(locale, "nav.openMenu")}><Icon name="menu" /></button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" data-drawer data-open="false" aria-hidden="true">
+  <div class="between">
+    <Logo locale={locale} />
+    <button class="icon-btn" type="button" data-drawer-close
+            aria-label={tr(locale, "nav.closeMenu")}><Icon name="close" /></button>
+  </div>
+  <Nav locale={locale} page={page} class="drawer__nav" />
+  <button class="btn btn--block" type="button" data-search-open>
+    <Icon name="search" /><span>{tr(locale, "nav.search")}</span></button>
+  <div class="between">
+    <LangSwitcher locale={locale} parts={parts} />
+    <ThemeSwitch locale={locale} />
+  </div>
+  <div class="row gap-sm"><SocialButtons locale={locale} /></div>
+</div>

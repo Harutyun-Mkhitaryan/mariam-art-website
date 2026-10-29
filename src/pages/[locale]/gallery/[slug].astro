@@ -1,0 +1,157 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Icon from "../../../components/Icon.astro";
+import Placeholder from "../../../components/Placeholder.astro";
+import WorkCard from "../../../components/WorkCard.astro";
+
+import { LOCALES, SITE, artworkUrl, asset, url } from "../../../lib/config";
+import { field, tr } from "../../../lib/i18n";
+import { category, itemsSorted, related, type Artwork } from "../../../lib/artworks";
+import { artworkLd, breadcrumbLd } from "../../../lib/seo";
+import ogDark from "../../../images/og-dark.jpg";
+import { absolute } from "../../../lib/config";
+
+export function getStaticPaths() {
+  const works = itemsSorted();
+  return LOCALES.flatMap((locale) =>
+    works.map((item, i) => ({
+      params: { locale, slug: item.slug },
+      props: {
+        item,
+        prev: works[(i - 1 + works.length) % works.length],
+        next: works[(i + 1) % works.length],
+        position: i + 1,
+        total: works.length,
+      },
+    })));
+}
+
+const { locale } = Astro.params as { locale: string };
+const { item, prev, next, position, total } =
+  Astro.props as { item: Artwork; prev: Artwork; next: Artwork; position: number; total: number };
+
+const cat = category(item.category);
+const title = field(item.title, locale);
+const desc = field(item.description, locale);
+const sold = item.availability === "sold";
+const availabilityKey = item.availability === "available" ? "available" : item.availability === "commission" ? "commission" : "sold";
+
+const subject = tr(locale, "artwork.inquirySubject", { title });
+const inquire = `${url(locale, "contact")}?subject=${subject}#contact-form`;
+
+const seoTitle = `${title} — ${field(cat.name, locale)} | ${SITE.name}`;
+const seoDesc = desc.length > 158 ? desc.slice(0, 157) + "…" : desc;
+
+const main = item.images?.main;
+const zoomSrc = main ? asset("artworks/" + main) : "";
+const details = item.images?.details ?? [];
+const pad = (n: number) => String(n).padStart(2, "0");
+---
+<Base
+  locale={locale}
+  page="gallery"
+  title={seoTitle}
+  description={seoDesc}
+  parts={["gallery", item.slug]}
+  ogType="article"
+  extraLd={[
+    artworkLd(locale, item, absolute(ogDark.src)),
+    breadcrumbLd([
+      [tr(locale, "nav.home"), url(locale)],
+      [tr(locale, "nav.gallery"), url(locale, "gallery")],
+      [title, artworkUrl(locale, item.slug)],
+    ]),
+  ]}
+>
+  <section class="section" style="padding-top:calc(var(--header-h) + var(--space-xl))">
+    <div class="wrap">
+      <div class="between">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href={url(locale)}>{tr(locale, "nav.home")}</a><span aria-hidden="true">&rsaquo;</span>
+          <a href={url(locale, "gallery")}>{tr(locale, "nav.gallery")}</a><span aria-hidden="true">&rsaquo;</span>
+          <span aria-current="page">{title}</span>
+        </nav>
+        <p class="label muted">{tr(locale, "artwork.cornerNote")}</p>
+      </div>
+
+      <div class="artwork mt-xl">
+        <div>
+          <h1 class="h1">{title}</h1>
+          <hr class="rule rule--gold rule--short mt-md" />
+          <dl class="meta-table mt-lg">
+            <div class="meta-row"><dt class="meta-row__k">{tr(locale, "artwork.category")}</dt>
+              <dd class="meta-row__v"><a href={`${url(locale, "gallery")}?c=${cat.id}`}>{field(cat.name, locale)}</a></dd></div>
+            {item.medium && <div class="meta-row"><dt class="meta-row__k">{tr(locale, "artwork.medium")}</dt>
+              <dd class="meta-row__v">{field(item.medium, locale)}</dd></div>}
+            {item.size && <div class="meta-row"><dt class="meta-row__k">{tr(locale, "artwork.size")}</dt>
+              <dd class="meta-row__v">{item.size.cm} cm ({item.size.in} in)</dd></div>}
+            {item.year && <div class="meta-row"><dt class="meta-row__k">{tr(locale, "artwork.year")}</dt>
+              <dd class="meta-row__v">{item.year}</dd></div>}
+            {item.availability && <div class="meta-row"><dt class="meta-row__k">{tr(locale, "artwork.availability")}</dt>
+              <dd class="meta-row__v"><span class:list={["dot", sold && "dot--sold"]} aria-hidden="true"></span>
+                {tr(locale, "artwork." + availabilityKey)}</dd></div>}
+          </dl>
+          <p class="body mt-lg measure">{desc}</p>
+          <div class="row gap-lg mt-xl" style="flex-wrap:wrap">
+            <a class="btn" href={inquire}><span>{tr(locale, "artwork.inquire")}</span><Icon name="arrow-right" /></a>
+            <button class="link" type="button" data-share aria-label={tr(locale, "artwork.share")}>
+              <Icon name="share" /><span>{tr(locale, "artwork.share")}</span></button>
+          </div>
+          <p class="caption gold mt-xs" data-share-note hidden>{tr(locale, "artwork.linkCopied")}</p>
+        </div>
+
+        <div>
+          <div class="media media--ratio-artwork" style="position:relative">
+            {zoomSrc
+              ? <img class="artwork-image" data-main-shot src={zoomSrc} alt={title}
+                     width="1200" height="1600" fetchpriority="high" />
+              : <Placeholder label={`${title} — ${tr(locale, "a11y.placeholderImage")}`}
+                             class="media__empty-fill" />}
+            <span style="position:absolute;right:12px;bottom:12px">{zoomSrc && (
+              <button class="icon-btn" type="button" data-zoom={zoomSrc} data-zoom-alt={title}
+                      aria-label={tr(locale, "artwork.zoom")}><Icon name="zoom-in" /></button>
+            )}</span>
+          </div>
+          {details.length > 0 && (
+            <div class="thumbs mt-sm">{details.map((d, i) => (
+              <button class="thumb" type="button" data-thumb={asset("artworks/" + d)}
+                      aria-current={i === 0 ? "true" : "false"}>
+                <img src={asset("artworks/" + d)} alt={`${title} — ${i + 1}`}
+                     width="1200" height="1600" loading="lazy" decoding="async" />
+              </button>
+            ))}</div>
+          )}
+        </div>
+      </div>
+
+      <hr class="rule mt-2xl" />
+      <nav class="pager mt-lg" aria-label={tr(locale, "nav.gallery")}>
+        <a class="pager__side" href={artworkUrl(locale, prev.slug)}>
+          <Icon name="arrow-left" />
+          <span><span class="label-sm muted" style="display:block">{tr(locale, "artwork.previous")}</span>
+          <span class="quote-sm">{field(prev.title, locale)}</span></span></a>
+        <span class="pager__count">
+          <span class="num">{pad(position)}</span><span class="muted">/</span>
+          <span class="num muted">{pad(total)}</span></span>
+        <a class="pager__side" href={artworkUrl(locale, next.slug)} style="text-align:right">
+          <span><span class="label-sm muted" style="display:block">{tr(locale, "artwork.next")}</span>
+          <span class="quote-sm">{field(next.title, locale)}</span></span>
+          <Icon name="arrow-right" /></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="h2">{tr(locale, "artwork.relatedTitle")}</h2>
+        <span class="section-head__rule" aria-hidden="true"></span>
+        <a class="link" href={url(locale, "gallery")}>
+          <span>{tr(locale, "artwork.relatedAction")}</span><Icon name="arrow-right" /></a>
+      </div>
+      <div class="grid grid--related mt-lg">{
+        related(item).map((r, i) => <WorkCard item={r} locale={locale} index={i + 1} />)
+      }</div>
+    </div>
+  </section>
+</Base>

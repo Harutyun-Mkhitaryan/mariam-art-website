@@ -1,0 +1,179 @@
+---
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import Picture from "../../components/Picture.astro";
+
+import { CONTACT, FORMS, SOCIAL, url } from "../../lib/config";
+import { localePaths, tr, trRaw } from "../../lib/i18n";
+import { breadcrumbLd, faqLd, simpleLd } from "../../lib/seo";
+
+export const getStaticPaths = () => localePaths();
+
+const { locale } = Astro.params as { locale: string };
+const faq = trRaw<{ q: string; a: string }[]>(locale, "contact.faq") ?? [];
+const maps = `https://www.google.com/maps/search/?api=1&query=${CONTACT.mapQuery.replace(/ /g, "+")}`;
+
+const channels = ([
+  ["instagram", "instagramNote", "Instagram"],
+  ["facebook", "facebookNote", "Facebook"],
+  ["whatsapp", "whatsappNote", "Whatsapp"],
+] as const).filter(([key]) => SOCIAL[key]);
+---
+<Base
+  locale={locale}
+  page="contact"
+  title={tr(locale, "contact.title")}
+  description={tr(locale, "contact.description")}
+  parts={["contact"]}
+  extraLd={[
+    faqLd(locale),
+    breadcrumbLd([
+      [tr(locale, "nav.home"), url(locale)],
+      [tr(locale, "nav.contact"), url(locale, "contact")],
+    ]),
+    simpleLd("ContactPage", locale, "contact"),
+  ]}
+>
+  <section class="page-hero hero hero--short">
+    <div class="hero__media"><Picture slot="contact-hero-dark" sizes="100vw" eager ratio={false} /></div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <span class="side-label side-label--right">{tr(locale, "home.sideRight")}</span>
+    <div class="wrap page-hero__inner split">
+      <div>
+        <p class="eyebrow">{tr(locale, "contact.eyebrow")}</p>
+        <h1 class="h1 mt-sm">
+          {tr(locale, "contact.heading1")}<br />{tr(locale, "contact.heading2")}<br />{tr(locale, "contact.heading3")}
+        </h1>
+        <p class="body mt-lg measure-sm">{tr(locale, "contact.body")}</p>
+        <p class="script mt-lg">{tr(locale, "contact.script")}</p>
+      </div>
+
+      <form class="form-card" id="contact-form" data-contact-form
+            data-access-key={FORMS.web3formsAccessKey} novalidate>
+        <input type="hidden" name="access_key" value={FORMS.web3formsAccessKey} />
+        <input type="hidden" name="from_name" value="Mariam-Art website" />
+        <input type="hidden" name="page_language" value={locale} />
+        <input type="checkbox" name="botcheck" class="form__honey" tabindex="-1" autocomplete="off" />
+
+        <div class="between">
+          <p class="label">{tr(locale, "contact.formTitle")}</p>
+          <p class="quote-sm">{tr(locale, "contact.formNote")}</p>
+        </div>
+
+        <div class="form-grid form-grid--2 mt-sm">
+          <label class="field">
+            <span class="field__label">{tr(locale, "contact.name")} *</span>
+            <input class="field__input" type="text" name="name" required data-validate="name"
+                   autocomplete="name" placeholder={tr(locale, "contact.name")} />
+            <span class="field__error">{tr(locale, "contact.errName")}</span>
+          </label>
+          <label class="field">
+            <span class="field__label">{tr(locale, "contact.email")} *</span>
+            <input class="field__input" type="email" name="email" required data-validate="email"
+                   autocomplete="email" placeholder={tr(locale, "contact.email")} />
+            <span class="field__error">{tr(locale, "contact.errEmail")}</span>
+          </label>
+        </div>
+
+        <label class="field">
+          <span class="field__label">{tr(locale, "contact.subject")}</span>
+          <input class="field__input" type="text" name="subject" data-subject-field
+                 placeholder={tr(locale, "contact.subject")} />
+        </label>
+
+        <label class="field">
+          <span class="field__label">{tr(locale, "contact.message")} *</span>
+          <textarea class="field__textarea" name="message" required maxlength="1000"
+                    data-validate="message" placeholder={tr(locale, "contact.message")}></textarea>
+          <span class="field__error">{tr(locale, "contact.errMessage")}</span>
+          <span class="field__counter caption" data-char-count>0 / 1000</span>
+        </label>
+
+        <div class="row gap-lg mt-sm" style="flex-wrap:wrap">
+          <button class="btn" type="submit" data-form-submit>
+            <span>{tr(locale, "contact.submit")}</span></button>
+          <p class="label-sm muted">{tr(locale, "contact.submitNote")}</p>
+        </div>
+        <div class="form__status mt-sm" data-form-status></div>
+        <noscript><p class="caption mt-sm">JavaScript is required to send this form —
+          please write to <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.</p></noscript>
+      </form>
+    </div>
+  </section>
+
+  <section class="section section--alt section--rule">
+    <div class="wrap grid grid--3" style="gap:clamp(32px,4vw,72px)">
+      <div>
+        <div class="section-head">
+          <h2 class="h3">{tr(locale, "contact.detailsTitle")}</h2>
+          <span class="section-head__rule" aria-hidden="true"></span>
+        </div>
+        <p class="label-sm muted mt-xs">{tr(locale, "contact.detailsKicker")}</p>
+        <div class="stack gap-md mt-lg">
+          <a class="contact-item" href={`mailto:${CONTACT.email}`}><Icon name="mail" />
+            <span><span class="label-sm muted" style="display:block">{tr(locale, "contact.labelEmail")}</span>
+            <span class="body">{CONTACT.email}</span></span></a>
+          <a class="contact-item" href={`tel:${CONTACT.phoneHref}`}><Icon name="phone" />
+            <span><span class="label-sm muted" style="display:block">{tr(locale, "contact.labelPhone")}</span>
+            <span class="body">{CONTACT.phone}</span></span></a>
+          <div class="contact-item"><Icon name="pin" />
+            <span><span class="label-sm muted" style="display:block">{tr(locale, "contact.labelStudio")}</span>
+            <span class="body">{CONTACT.city}, {CONTACT.country}</span>
+            <span class="caption">{CONTACT.addressNote}</span></span></div>
+          <div class="contact-item"><Icon name="clock" />
+            <span><span class="label-sm muted" style="display:block">{tr(locale, "contact.labelHours")}</span>
+            <span class="body">{CONTACT.hours}</span>
+            <span class="caption">{CONTACT.responseTime}</span></span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="map-card">
+          <div class="map-card__grid" aria-hidden="true"></div>
+          <div class="map-card__pin"><Icon name="pin" />
+            <p class="h4 mt-xs" style="color:var(--text)">{CONTACT.city}</p>
+            <p class="caption">{tr(locale, "contact.mapNote")}</p></div>
+        </div>
+        <a class="link mt-md" href={maps} target="_blank" rel="noopener noreferrer">
+          <span>{tr(locale, "contact.directions")}</span><Icon name="arrow-right" /></a>
+      </div>
+
+      <div>
+        <div class="section-head">
+          <h2 class="h3">{tr(locale, "contact.followTitle")}</h2>
+          <span class="section-head__rule" aria-hidden="true"></span>
+        </div>
+        <p class="label-sm muted mt-xs">{tr(locale, "contact.followKicker")}</p>
+        <div class="stack gap-md mt-lg">{
+          channels.map(([key, noteKey, label]) => (
+            <a class="contact-item" href={SOCIAL[key]} target="_blank" rel="noopener noreferrer me">
+              <span class="social-btn"><Icon name={key} /></span>
+              <span><span class="body" style="display:block">{label}</span>
+              <span class="caption">{tr(locale, "contact." + noteKey)}</span></span></a>
+          ))
+        }</div>
+        <hr class="rule mt-lg" />
+        <p class="quote-sm mt-md">&ldquo;{tr(locale, "contact.followQuote")}&rdquo;</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="h2">{tr(locale, "contact.faqTitle")}</h2>
+        <span class="section-head__rule" aria-hidden="true"></span>
+        <p class="label muted">{tr(locale, "contact.faqKicker")}</p>
+      </div>
+      <div class="faq mt-lg">{
+        faq.map((q) => (
+          <div class="faq__item">
+            <h3 class="faq__q">{q.q}</h3>
+            <p class="body-sm">{q.a}</p>
+          </div>
+        ))
+      }</div>
+    </div>
+  </section>
+
+</Base>

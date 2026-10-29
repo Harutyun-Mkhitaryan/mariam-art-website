@@ -1,0 +1,46 @@
+---
+import Logo from "./Logo.astro";
+import SocialButtons from "./SocialButtons.astro";
+import { CONTACT, PAGES, PAGE_SEG, YEAR, url } from "../lib/config";
+import { field, tr } from "../lib/i18n";
+import { CATEGORIES } from "../lib/artworks";
+
+interface Props { locale: string }
+const { locale } = Astro.props;
+---
+<footer class="footer">
+  <div class="wrap footer__top">
+    <div>
+      <Logo locale={locale} />
+      <p class="body-sm mt-md measure-sm">{tr(locale, "brand.statement")}</p>
+      <div class="row gap-sm mt-md"><SocialButtons locale={locale} /></div>
+    </div>
+    <div>
+      <p class="footer__col-title">{tr(locale, "footer.explore")}</p>
+      <div class="footer__list">{
+        PAGES.map((k) => <a href={url(locale, PAGE_SEG[k])}>{tr(locale, "nav." + k)}</a>)
+      }</div>
+    </div>
+    <div>
+      <p class="footer__col-title">{tr(locale, "footer.collections")}</p>
+      <div class="footer__list">{
+        CATEGORIES.map((c) => (
+          <a href={`${url(locale, "gallery")}?c=${c.id}`}>{field(c.name, locale)}</a>
+        ))
+      }</div>
+    </div>
+    <div>
+      <p class="footer__col-title">{tr(locale, "footer.studio")}</p>
+      <div class="footer__list">
+        <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+        <a href={`tel:${CONTACT.phoneHref}`}>{CONTACT.phone}</a>
+        <span>{CONTACT.city}, {CONTACT.country}</span>
+        <span>{CONTACT.addressNote}</span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer__bottom">
+    <p class="label-sm muted" data-copyright-year>{tr(locale, "footer.copyright", { year: YEAR })}</p>
+    <p class="label-sm muted">{tr(locale, "brand.footerTag")}</p>
+  </div>
+</footer>

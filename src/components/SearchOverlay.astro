@@ -1,0 +1,33 @@
+---
+import Icon from "./Icon.astro";
+import { tr } from "../lib/i18n";
+
+interface Props { locale: string }
+const { locale } = Astro.props;
+---
+<div class="search-overlay" data-search data-open="false" aria-hidden="true">
+  <div class="search" role="dialog" aria-modal="true" aria-label={tr(locale, "search.open")}>
+    <div class="search__bar">
+      <Icon name="search" />
+      <input class="search__input" type="search" data-search-input autocomplete="off"
+             spellcheck="false" placeholder={tr(locale, "search.placeholder")}
+             aria-label={tr(locale, "search.open")} />
+      <button class="icon-btn" type="button" data-search-close
+              aria-label={tr(locale, "search.close")}><Icon name="close" /></button>
+    </div>
+    <div class="search__results" data-search-results role="listbox"
+         aria-label={tr(locale, "search.open")}></div>
+    <div class="search__foot">
+      <span><kbd>↑↓</kbd>{tr(locale, "search.navigate")}</span>
+      <span><kbd>↵</kbd>{tr(locale, "search.select")}</span>
+      <span><kbd>esc</kbd>{tr(locale, "search.dismiss")}</span>
+      <span data-search-count style="margin-left:auto"></span>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" data-lightbox data-open="false" aria-hidden="true" role="dialog" aria-modal="true">
+  <button class="icon-btn lightbox__close" type="button" data-lightbox-close
+          aria-label={tr(locale, "artwork.closeZoom")}><Icon name="close" /></button>
+  <img alt="" width="1600" height="1200" />
+</div>

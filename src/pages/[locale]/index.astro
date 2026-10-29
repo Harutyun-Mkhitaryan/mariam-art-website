@@ -1,0 +1,143 @@
+---
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import Picture from "../../components/Picture.astro";
+import WorkCard from "../../components/WorkCard.astro";
+
+import { FORMS, url } from "../../lib/config";
+import { localePaths, tr } from "../../lib/i18n";
+import { featured } from "../../lib/artworks";
+import { breadcrumbLd } from "../../lib/seo";
+
+export const getStaticPaths = () => localePaths();
+
+const { locale } = Astro.params as { locale: string };
+const works = featured(5);
+const values = [1, 2, 3];
+---
+<Base
+  locale={locale}
+  page="home"
+  title={tr(locale, "home.title")}
+  description={tr(locale, "home.description")}
+  extraLd={[breadcrumbLd([[tr(locale, "nav.home"), url(locale)]])]}
+>
+  <section class="hero">
+    <div class="hero__media">
+      <Picture slot="hero-dark" alt={tr(locale, "home.heroLine1")} sizes="100vw" eager ratio={false} />
+    </div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="hero__rail-scrim" aria-hidden="true"></div>
+    <span class="side-label side-label--left">{tr(locale, "home.sideLeft")}</span>
+    <span class="side-label side-label--right">{tr(locale, "home.sideRight")}</span>
+    <div class="wrap hero__inner">
+      <div class="hero__content">
+        <p class="eyebrow">{tr(locale, "brand.tagline")}</p>
+        <h1 class="display hero__title">
+          {tr(locale, "home.heroLine1")}<br />{tr(locale, "home.heroLine2")}<br />{tr(locale, "home.heroLine3")}
+        </h1>
+        <hr class="rule rule--gold rule--short mt-lg" />
+        <p class="body-lg mt-md measure-sm">{tr(locale, "home.heroBody")}</p>
+        <a class="btn mt-xl" href={url(locale, "gallery")}>
+          <span>{tr(locale, "home.cta")}</span><Icon name="arrow-right" /></a>
+      </div>
+      <div class="hero__rail">
+        <p class="quote-sm">{tr(locale, "home.quote1")}<br />{tr(locale, "home.quote2")}</p>
+        <hr class="rule rule--gold mt-sm" style="width:56px" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="h2">{tr(locale, "home.worksTitle")}</h2>
+        <span class="section-head__rule" aria-hidden="true"></span>
+        <p class="label muted">{tr(locale, "home.worksKicker")}</p>
+        <a class="link" href={url(locale, "gallery")}>
+          <span>{tr(locale, "home.worksAction")}</span><Icon name="arrow-right" /></a>
+      </div>
+      <div class="grid grid--feature mt-xl">{
+        works.map((w, i) => <WorkCard item={w} locale={locale} index={i + 1} />)
+      }</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split split--wide-media">
+      <div class="reveal">
+        <p class="eyebrow gold">{tr(locale, "home.aboutEyebrow")}</p>
+        <h2 class="h1 mt-md">{tr(locale, "home.aboutTitle1")}<br />{tr(locale, "home.aboutTitle2")}</h2>
+        <p class="body-lg mt-lg measure">{tr(locale, "home.aboutBody")}</p>
+        <p class="script mt-lg">{tr(locale, "about.signature")}</p>
+        <p class="label-sm muted">{tr(locale, "about.signatureSub")}</p>
+        <a class="btn mt-lg" href={url(locale, "about")}>
+          <span>{tr(locale, "home.aboutCta")}</span><Icon name="arrow-right" /></a>
+      </div>
+      <div class="split__media split__media--bleed reveal">
+        <div class="media media--ratio-4-3">
+          <Picture slot="about-portrait" alt={tr(locale, "about.heading2")} ratio={false}
+                   sizes="(min-width:900px) 52vw, 100vw" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="banner section--alt">
+    <div class="banner__media"><Picture slot="banner-dark" sizes="60vw" ratio={false} /></div>
+    <div class="banner__scrim" aria-hidden="true"></div>
+    <div class="wrap banner__inner">
+      <div class="banner__quote">
+        <div class="banner__bar" aria-hidden="true"></div>
+        <blockquote>
+          <p class="quote">&ldquo;{tr(locale, "home.bannerQuote")}&rdquo;</p>
+          <footer class="label-sm muted mt-md">{tr(locale, "home.bannerAuthor")}</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div class="reveal">
+        <p class="eyebrow gold">{tr(locale, "home.valuesKicker")}</p>
+        <h2 class="h2 mt-md">
+          {tr(locale, "home.valuesTitle1")}<br />{tr(locale, "home.valuesTitle2")}<br />{tr(locale, "home.valuesTitle3")}
+        </h2>
+        <p class="body mt-lg measure">{tr(locale, "home.valuesBody")}</p>
+        <a class="btn mt-lg" href={url(locale, "gallery")}>
+          <span>{tr(locale, "home.valuesCta")}</span><Icon name="arrow-right" /></a>
+      </div>
+      <div class="grid grid--3">{
+        values.map((i) => (
+          <div class="value-card reveal">
+            <span class="num">{String(i).padStart(2, "0")}</span>
+            <h3 class="h4">{tr(locale, `home.value${i}Title`)}</h3>
+            <p class="body-sm">{tr(locale, `home.value${i}Body`)}</p>
+          </div>
+        ))
+      }</div>
+    </div>
+  </section>
+
+  <section class="section section--alt section--rule">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow gold">{tr(locale, "home.newsKicker")}</p>
+        <h2 class="h3 mt-sm">{tr(locale, "home.newsTitle")}</h2>
+        <p class="body-sm mt-sm measure-sm">{tr(locale, "home.newsBody")}</p>
+      </div>
+      <form class="stack gap-sm" data-newsletter data-access-key={FORMS.web3formsAccessKey}>
+        <input type="hidden" name="access_key" value={FORMS.web3formsAccessKey} />
+        <input type="hidden" name="subject" value="Newsletter signup — mariam-art" />
+        <input type="hidden" name="from_name" value="Mariam-Art website" />
+        <input type="checkbox" name="botcheck" class="form__honey" tabindex="-1" autocomplete="off" />
+        <label class="sr-only" for="news-email">{tr(locale, "home.newsPlaceholder")}</label>
+        <input class="field__input" id="news-email" type="email" name="email" required
+               placeholder={tr(locale, "home.newsPlaceholder")} autocomplete="email" />
+        <button class="btn btn--filled" type="submit">{tr(locale, "home.newsButton")}</button>
+        <p class="caption" data-newsletter-note hidden></p>
+      </form>
+    </div>
+  </section>
+</Base>

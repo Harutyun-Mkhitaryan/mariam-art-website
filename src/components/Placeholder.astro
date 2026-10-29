@@ -1,0 +1,7 @@
+---
+/** Named stand-in for a photograph the artist has not supplied yet. */
+interface Props { label: string; ratio?: string; class?: string }
+const { label, ratio, class: cls = "" } = Astro.props;
+---
+<div class:list={["media", "media--empty", ratio && `media--ratio-${ratio}`, cls]}
+     role="img" aria-label={label}><span>{label}</span></div>

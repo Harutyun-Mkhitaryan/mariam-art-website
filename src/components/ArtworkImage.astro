@@ -1,0 +1,20 @@
+---
+import Placeholder from "./Placeholder.astro";
+import { asset } from "../lib/config";
+import { field, tr } from "../lib/i18n";
+import type { Artwork } from "../lib/artworks";
+
+interface Props { item: Artwork; locale: string; class?: string }
+const { item, locale, class: cls = "media media--ratio-artwork" } = Astro.props;
+const main = item.images?.main;
+const title = field(item.title, locale);
+---
+{main ? (
+  <div class={cls}>
+    <img class="artwork-image" src={asset("artworks/" + main)} alt={title}
+         width="1200" height="1600" loading="lazy" decoding="async" />
+  </div>
+) : (
+  <Placeholder label={`${title} — ${tr(locale, "a11y.placeholderImage")}`}
+               class={cls.replace(/^media\s+/, "")} />
+)}

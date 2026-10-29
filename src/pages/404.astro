@@ -1,0 +1,31 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import { DEFAULT_LOCALE, SITE, url } from "../lib/config";
+import { tr } from "../lib/i18n";
+
+// A static host serves one 404 document for every path, so it is built in the
+// default locale; the client-side redirect below moves visitors who were
+// browsing another language back into theirs.
+const locale = DEFAULT_LOCALE;
+---
+<Base
+  locale={locale}
+  page="404"
+  title={`${tr(locale, "error404.title")} — ${SITE.name}`}
+  description={tr(locale, "error404.body")}
+  noindex
+>
+  <section class="section" style="padding-top:calc(var(--header-h) + var(--space-3xl));min-height:70vh">
+    <div class="wrap text-center">
+      <p class="num">404</p>
+      <h1 class="h1 mt-sm">{tr(locale, "error404.heading")}</h1>
+      <p class="body-lg mt-md measure" style="margin-inline:auto">{tr(locale, "error404.body")}</p>
+      <div class="row gap-md mt-xl" style="justify-content:center;flex-wrap:wrap">
+        <a class="btn" href={url(locale, "gallery")}>
+          <span>{tr(locale, "error404.cta")}</span><Icon name="arrow-right" /></a>
+        <a class="link" href={url(locale)}><span>{tr(locale, "error404.home")}</span></a>
+      </div>
+    </div>
+  </section>
+</Base>

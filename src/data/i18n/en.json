@@ -1,0 +1,198 @@
+{
+  "meta": { "code": "en", "name": "English", "dir": "ltr", "ogLocale": "en_US" },
+
+  "nav": {
+    "home": "Home", "gallery": "Gallery", "about": "About", "contact": "Contact",
+    "skipToContent": "Skip to content", "openMenu": "Open menu", "closeMenu": "Close menu",
+    "menu": "Menu", "search": "Search", "toggleTheme": "Switch theme",
+    "themeDark": "Dark", "themeLight": "Light", "language": "Language"
+  },
+
+  "brand": {
+    "tagline": "Original Art  •  Custom Commissions  •  A More Beautiful Everyday",
+    "studio": "Art Studio",
+    "footerTag": "Art  •  Nature  •  A Kinder Tomorrow",
+    "statement": "Hand-painted pieces for a more meaningful, beautiful everyday — where art, nature and life meet."
+  },
+
+  "home": {
+    "title": "Mariam-Art — Hand-painted Art Studio",
+    "description": "Original hand-painted art by Mariam: botanical mixed media, oil paintings, pencil portraits, painted cups and clothing. Commissions welcome.",
+    "heroLine1": "Art", "heroLine2": "in every", "heroLine3": "detail",
+    "heroBody": "Hand-painted pieces for a more meaningful, beautiful everyday — where art, nature and life meet.",
+    "cta": "Explore the Collection",
+    "quote1": "Small details.", "quote2": "A deeper life.",
+    "sideLeft": "Art changes things", "sideRight": "Beauty lives here",
+    "scroll": "Scroll",
+    "worksTitle": "Selected Works",
+    "worksKicker": "Different forms. A shared soul.",
+    "worksAction": "View all works",
+    "aboutEyebrow": "Artist behind the work",
+    "aboutTitle1": "About", "aboutTitle2": "Mariam-Art",
+    "aboutBody": "Mariam-Art is a celebration of the quiet beauty in life — hand-painted pieces inspired by nature, emotion, and the stories that live in between.",
+    "aboutCta": "Read the full story",
+    "bannerQuote": "I paint what moves me — the quiet moments, the natural beauty, and the feeling of home.",
+    "bannerAuthor": "— Mariam",
+    "valuesKicker": "More than art",
+    "valuesTitle1": "A kinder,", "valuesTitle2": "more beautiful", "valuesTitle3": "tomorrow",
+    "valuesBody": "Through timeless, nature-inspired art, I hope to create pieces that bring calm, connection, and a little more beauty into the world.",
+    "valuesCta": "Explore the Gallery",
+    "value1Title": "Hand-made", "value1Body": "Every piece is painted by hand, never printed or reproduced.",
+    "value2Title": "Natural", "value2Body": "Pigments, papers and textiles chosen for how they age.",
+    "value3Title": "Lasting", "value3Body": "Made to stay beautiful for decades, not seasons.",
+    "newsKicker": "Stay close to the studio",
+    "newsTitle": "Letters from the studio",
+    "newsBody": "New works, quiet thoughts and studio notes — a few times a year, never more.",
+    "newsPlaceholder": "Your email address",
+    "newsButton": "Subscribe"
+  },
+
+  "gallery": {
+    "title": "Gallery — Original Hand-painted Works",
+    "description": "Browse original hand-painted works by Mariam — botanical mixed media, oil paintings, pencil portraits, hand-painted cups and clothing.",
+    "kicker": "Gallery",
+    "heading1": "Art", "heading2": "in every", "heading3": "detail",
+    "body": "Original, hand-crafted pieces inspired by nature, emotion and the beauty of everyday life.",
+    "quote": "Small details. A deeper life.",
+    "quoteAuthor": "— Mariam-Art",
+    "filterAll": "All Works",
+    "filterNote": "A more beautiful everyday",
+    "sortLabel": "Sort by",
+    "sortFeatured": "Featured", "sortNewest": "Newest", "sortTitle": "Title A–Z",
+    "counter": "Showing {shown} of {total} works",
+    "empty": "Nothing matches that filter yet.",
+    "emptyAction": "Show all works",
+    "loadMore": "Load more works"
+  },
+
+  "artwork": {
+    "backToGallery": "All Works",
+    "cornerNote": "Original art  •  A more beautiful everyday",
+    "category": "Category", "medium": "Medium", "size": "Size", "year": "Year",
+    "availability": "Availability",
+    "available": "Available", "sold": "Sold", "commission": "Commission only",
+    "inquire": "Inquire about this piece",
+    "save": "Save",
+    "share": "Share",
+    "linkCopied": "Link copied",
+    "zoom": "View full size",
+    "closeZoom": "Close",
+    "previous": "Previous", "next": "Next",
+    "relatedTitle": "You may also like",
+    "relatedAction": "Explore more",
+    "storyTitle": "About this piece",
+    "storyBody": "Each layer is built by hand over several weeks — texture paste pressed into organic ridges, then washed with thin acrylic glazes until the surface holds light the way a real leaf does. The gold is applied last, leaf by leaf, following the veins the texture created on its own.",
+    "careTitle": "Care & shipping",
+    "careFinish": "Finish", "careFinishValue": "Matte varnish, UV protected",
+    "careFraming": "Framing", "careFramingValue": "Unframed — ready to hang",
+    "careShipping": "Shipping", "careShippingValue": "Worldwide, insured, 5–10 days",
+    "careReturns": "Returns", "careReturnsValue": "14 days, original condition",
+    "inquirySubject": "Inquiry about \"{title}\""
+  },
+
+  "about": {
+    "title": "About the Artist — Mariam",
+    "description": "Mariam is a visual artist working in botanical mixed media, oil and graphite. Read about her process, materials and studio.",
+    "eyebrow": "A life inspired by nature, art and meaning",
+    "heading1": "About", "heading2": "the Artist",
+    "body": "I'm Mariam, a visual artist and the heart behind Mariam-Art. I create hand-painted pieces that bring together nature, emotion, and a sense of timeless beauty. Through texture, light, and delicate details, I aim to capture the quiet moments that make life meaningful — and turn them into art for your space.",
+    "signature": "Mariam", "signatureSub": "Mariam-Art Studio",
+    "quote": "Nature is my greatest source of inspiration. In its textures, contrasts and quiet details, I find endless stories to tell.",
+    "quoteAuthor": "— Mariam",
+    "processTitle": "My Process",
+    "processKicker": "From inspiration to a timeless piece",
+    "processBody": "Each artwork is a journey — from a moment of inspiration to a finished piece that carries emotion, texture and a story of its own.",
+    "processAction": "A more beautiful everyday",
+    "step1Title": "Inspiration", "step1Body": "Nature, everyday moments, and the beauty in imperfection spark my ideas.",
+    "step2Title": "Sketching", "step2Body": "I translate emotions and natural forms into sketches, exploring composition and flow.",
+    "step3Title": "Creating", "step3Body": "Layer by layer, I build texture and depth, letting the piece evolve naturally on canvas.",
+    "step4Title": "Finishing", "step4Body": "Every detail is carefully refined, completing a piece that's ready to bring beauty and meaning into your home.",
+    "studioTitle": "In the studio",
+    "studioKicker": "Where the work happens",
+    "studioBody": "A quiet room with north light, too many brushes and a long table that is never quite clear.",
+    "cta": "Explore the Gallery"
+  },
+
+  "contact": {
+    "title": "Contact — Commissions & Enquiries",
+    "description": "Get in touch about original artwork, custom commissions and collaborations. Studio visits by appointment.",
+    "eyebrow": "Let's stay in touch",
+    "heading1": "Let's Create", "heading2": "Something", "heading3": "Beautiful",
+    "body": "Original art, custom commissions, and collaborations — I'd love to hear from you. Share your ideas, questions, or project details, and let's bring something meaningful to life together.",
+    "script": "Art connects hearts",
+    "formTitle": "Send a message",
+    "formNote": "Every idea begins with a conversation.",
+    "name": "Your Name", "email": "Your Email", "phone": "Phone", "subject": "Subject",
+    "message": "Your Message",
+    "optional": "optional",
+    "required": "required",
+    "submit": "Send Message",
+    "sending": "Sending…",
+    "submitNote": "I'll get back to you as soon as possible.",
+    "successTitle": "Thank you — your message is on its way.",
+    "successBody": "I read every message myself and usually reply within a day.",
+    "errorTitle": "That didn't go through.",
+    "errorBody": "Please try again, or write to {email} directly.",
+    "errName": "Please tell me your name.",
+    "errEmail": "Please check the email address.",
+    "errMessage": "Please add a short message.",
+    "detailsTitle": "Contact Details",
+    "detailsKicker": "Let's bring your vision to life.",
+    "labelEmail": "Email", "labelPhone": "Phone", "labelStudio": "Studio Location",
+    "labelHours": "Working Hours",
+    "followTitle": "Follow the Journey",
+    "followKicker": "More art. More inspiration.",
+    "followQuote": "Art is a more beautiful way of being in the world.",
+    "instagramNote": "Behind the scenes",
+    "facebookNote": "Art & updates",
+    "whatsappNote": "Quick chat",
+    "directions": "Get directions",
+    "mapNote": "Creativity lives here",
+    "faqTitle": "Before you write",
+    "faqKicker": "A few things people often ask",
+    "faq": [
+      { "q": "Do you take commissions?", "a": "Yes — portraits, botanical pieces and custom sizes. Tell me the space and the feeling you want." },
+      { "q": "How long does a piece take?", "a": "Between three and eight weeks, depending on size, layering and how long the paint wants to dry." },
+      { "q": "Do you ship internationally?", "a": "Worldwide, insured and tracked. Unframed works travel rolled; smaller pieces ship flat." },
+      { "q": "Can I visit the studio?", "a": "By appointment. Write first and we'll find a quiet afternoon." }
+    ]
+  },
+
+  "search": {
+    "open": "Search the site",
+    "placeholder": "Search works, pages, materials…",
+    "hint": "Press ⌘K or Ctrl+K anywhere",
+    "empty": "Nothing found for \"{query}\".",
+    "emptyHint": "Try a category, a material, or part of a title.",
+    "start": "Start typing to search across works and pages.",
+    "resultsOne": "1 result",
+    "resultsMany": "{n} results",
+    "groupWorks": "Works", "groupPages": "Pages", "groupCategories": "Categories",
+    "groupFaq": "Questions",
+    "close": "Close search",
+    "navigate": "to navigate", "select": "to open", "dismiss": "to close"
+  },
+
+  "footer": {
+    "explore": "Explore",
+    "collections": "Collections",
+    "studio": "Studio",
+    "copyright": "Mariam-Art Art Studio  © {year}",
+    "backToTop": "Back to top"
+  },
+
+  "a11y": {
+    "artworkImage": "{title} — {medium}",
+    "placeholderImage": "Photograph coming soon",
+    "logoHome": "Mariam-Art — home",
+    "externalLink": "opens in a new tab"
+  },
+
+  "error404": {
+    "title": "Page not found",
+    "heading": "This page has wandered off",
+    "body": "The link may be old, or the page may have moved. The gallery is a good place to start again.",
+    "cta": "Go to the Gallery",
+    "home": "Back home"
+  }
+}

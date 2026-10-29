@@ -1,0 +1,17 @@
+---
+import { LOCALES, url } from "../lib/config";
+import { localeMeta, tr } from "../lib/i18n";
+
+interface Props { locale: string; parts?: string[] }
+const { locale, parts = [] } = Astro.props;
+---
+<nav class="lang" aria-label={tr(locale, "nav.language")}>{
+  LOCALES.map((l, i) => (
+    <Fragment>
+      <a class="lang__item" hreflang={l} lang={l}
+         aria-current={l === locale ? "true" : "false"}
+         href={url(l, ...parts)}>{localeMeta(l).code.toUpperCase()}</a>
+      {i < LOCALES.length - 1 && <span class="lang__sep" aria-hidden="true">|</span>}
+    </Fragment>
+  ))
+}</nav>

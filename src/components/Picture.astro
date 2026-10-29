@@ -1,0 +1,29 @@
+---
+import { responsive } from "../lib/images";
+import Placeholder from "./Placeholder.astro";
+
+interface Props {
+  slot: string;
+  alt?: string;
+  sizes?: string;
+  eager?: boolean;
+  /** false drops the inline aspect-ratio — use it when a wrapper already sets one */
+  ratio?: boolean;
+  class?: string;
+}
+const { slot, alt = "", sizes = "100vw", eager = false, ratio = true, class: cls = "" } = Astro.props;
+const img = await responsive(slot);
+---
+{img ? (
+  <picture class={cls}>
+    <source type="image/webp" srcset={img.webp} sizes={sizes} />
+    <img src={img.src} srcset={img.jpg} sizes={sizes} alt={alt}
+         width={img.width} height={img.height}
+         loading={eager ? "eager" : "lazy"}
+         fetchpriority={eager ? "high" : undefined}
+         decoding={eager ? undefined : "async"}
+         style={ratio ? `aspect-ratio:${img.width}/${img.height}` : undefined} />
+  </picture>
+) : (
+  <Placeholder label={alt} class={cls} />
+)}

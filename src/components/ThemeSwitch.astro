@@ -1,0 +1,13 @@
+---
+import Icon from "./Icon.astro";
+import { tr } from "../lib/i18n";
+interface Props { locale: string }
+const { locale } = Astro.props;
+---
+<button class="theme-switch" type="button" data-theme-toggle
+        aria-label={tr(locale, "nav.toggleTheme")} aria-pressed="false">
+  <span class="theme-switch__knob">
+    <span class="theme-switch__moon"><Icon name="moon" /></span>
+    <span class="theme-switch__sun"><Icon name="sun" /></span>
+  </span>
+</button>

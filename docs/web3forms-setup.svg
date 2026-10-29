@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="2150" viewBox="0 0 1440 2150" role="img" aria-labelledby="title description">
+  <title id="title">Как подключить Web3Forms к сайту Mariam-Art на Astro</title>
+  <desc id="description">Шесть шагов: зарегистрироваться, создать форму, скопировать Access Key, вставить его в site.config.json, проверить отправку и повторно проверить опубликованный сайт. Access Key является публичным.</desc>
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#faf7ef"/><stop offset="1" stop-color="#efe9dc"/></linearGradient>
+    <linearGradient id="gold" x2="1" y2="1"><stop stop-color="#b88e4b"/><stop offset="1" stop-color="#80602e"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#392b18" flood-opacity=".08"/></filter>
+  </defs>
+  <rect width="1440" height="2150" fill="url(#paper)"/>
+  <path d="M0 0H1440V22H0z" fill="url(#gold)"/>
+  <circle cx="1320" cy="145" r="145" fill="#e9dfcc" opacity=".52"/>
+  <circle cx="1350" cy="130" r="88" fill="none" stroke="#b69764" stroke-width="2" opacity=".42"/>
+  <path d="M1296 188c33-55 65-83 105-112m-75 35c-4-26 4-43 24-55m7 37c20-14 38-16 55-7m-89 65c-1-23 8-39 27-49m2 37c18-10 34-11 49-2" fill="none" stroke="#92774e" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+
+  <text x="88" y="90" fill="#856a42" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="5">MARIAM-ART  ·  ПАМЯТКА</text>
+  <text x="88" y="176" fill="#29251f" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="500">Как подключить Web3Forms</text>
+  <text x="90" y="225" fill="#6c6254" font-family="Arial, sans-serif" font-size="27">К форме контактов в вашем Astro-проекте · 6 шагов</text>
+  <path d="M90 270H1350" stroke="#cbbda5" stroke-width="2"/>
+
+  <!-- Step cards -->
+  <g filter="url(#shadow)">
+    <rect x="90" y="310" width="1260" height="190" rx="24" fill="#fffdf8" stroke="#e1d7c6"/>
+    <rect x="90" y="530" width="1260" height="190" rx="24" fill="#fffdf8" stroke="#e1d7c6"/>
+    <rect x="90" y="750" width="1260" height="190" rx="24" fill="#fffdf8" stroke="#e1d7c6"/>
+    <rect x="90" y="970" width="1260" height="190" rx="24" fill="#fffdf8" stroke="#e1d7c6"/>
+    <rect x="90" y="1190" width="1260" height="190" rx="24" fill="#fffdf8" stroke="#e1d7c6"/>
+    <rect x="90" y="1410" width="1260" height="190" rx="24" fill="#fffdf8" stroke="#e1d7c6"/>
+  </g>
+
+  <!-- Number badges and connectors -->
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <g fill="#302b24" stroke="#c9ab76" stroke-width="3">
+      <circle cx="180" cy="405" r="43"/><circle cx="180" cy="625" r="43"/><circle cx="180" cy="845" r="43"/>
+      <circle cx="180" cy="1065" r="43"/><circle cx="180" cy="1285" r="43"/><circle cx="180" cy="1505" r="43"/>
+    </g>
+    <g fill="#ead9b8" font-size="25" font-weight="700">
+      <text x="180" y="414">01</text><text x="180" y="634">02</text><text x="180" y="854">03</text>
+      <text x="180" y="1074">04</text><text x="180" y="1294">05</text><text x="180" y="1514">06</text>
+    </g>
+  </g>
+  <g fill="none" stroke="#b89a68" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M180 458v47m-8-8 8 9 8-9M180 678v47m-8-8 8 9 8-9M180 898v47m-8-8 8 9 8-9M180 1118v47m-8-8 8 9 8-9M180 1338v47m-8-8 8 9 8-9"/>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <g fill="#302b24" font-size="31" font-weight="700">
+      <text x="260" y="372">Запросите Access Key</text>
+      <text x="260" y="592">Получите и скопируйте ключ</text>
+      <text x="260" y="812">Откройте конфигурацию проекта</text>
+      <text x="260" y="1032">Вставьте свой ключ</text>
+      <text x="260" y="1252">Проверьте отправку локально</text>
+      <text x="260" y="1472">Проверьте опубликованный сайт</text>
+    </g>
+    <g fill="#50483d" font-size="24">
+      <text x="260" y="418">На web3forms.com укажите email, куда должны приходить сообщения с сайта.</text>
+      <text x="260" y="450">Сервис отправит Access Key на этот адрес.</text>
+
+      <text x="260" y="638">Откройте письмо от Web3Forms и скопируйте выданный Access Key.</text>
+      <text x="260" y="670">Он связывает отправку сайта с вашим адресом получения.</text>
+
+      <text x="260" y="858">В корне проекта откройте файл site.config.json.</text>
+      <text x="260" y="890">Найдите параметр forms → web3formsAccessKey.</text>
+
+      <text x="260" y="1078">Замените YOUR-WEB3FORMS-ACCESS-KEY на скопированный ключ.</text>
+      <text x="260" y="1110">Сохраните файл, не удаляя кавычки вокруг значения.</text>
+
+      <text x="260" y="1298">Запустите npm run dev и откройте страницу «Контакты».</text>
+      <text x="260" y="1330">Отправьте тестовое сообщение и проверьте входящие письма.</text>
+
+      <text x="260" y="1518">После публикации отправьте ещё одно тестовое сообщение.</text>
+      <text x="260" y="1550">Если письма нет — проверьте папку «Спам».</text>
+    </g>
+  </g>
+
+  <!-- Key safety note -->
+  <rect x="90" y="1650" width="1260" height="245" rx="26" fill="#302b24"/>
+  <rect x="90" y="1650" width="12" height="245" rx="6" fill="url(#gold)"/>
+  <circle cx="160" cy="1720" r="25" fill="#d1b27c"/>
+  <text x="160" y="1730" text-anchor="middle" fill="#302b24" font-family="Arial, sans-serif" font-size="28" font-weight="700">i</text>
+  <text x="210" y="1730" fill="#f1dfbb" font-family="Arial, sans-serif" font-size="29" font-weight="700">Важно про Access Key</text>
+  <text x="145" y="1790" fill="#fffdf8" font-family="Arial, sans-serif" font-size="23">Ключ Web3Forms предназначен для клиентской формы и будет виден в браузере — это нормально.</text>
+  <text x="145" y="1830" fill="#fffdf8" font-family="Arial, sans-serif" font-size="23">Не вставляйте сюда пароли или секретные ключи от других сервисов.</text>
+
+  <path d="M90 1950H1350" stroke="#cbbda5" stroke-width="2"/>
+  <text x="90" y="2000" fill="#6c6254" font-family="Arial, sans-serif" font-size="20">Настройка формы для сайта Mariam-Art · Astro</text>
+  <text x="90" y="2040" fill="#8a7657" font-family="Arial, sans-serif" font-size="17">Официальная инструкция: docs.web3forms.com/getting-started/installation</text>
+  <text x="1350" y="2000" text-anchor="end" fill="#856a42" font-family="Arial, sans-serif" font-size="18" letter-spacing="3">WEB3FORMS</text>
+</svg>
