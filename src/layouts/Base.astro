@@ -117,7 +117,7 @@ const PRELOAD: Record<string, string[]> = {
 {PRELOAD[locale].map((f) => (
   <link rel="preload" as="font" type="font/woff2" href={asset("fonts/" + f)} crossorigin />
 ))}
-<script is:inline src={asset("theme-init.js")}></script>
+<script is:inline src={`${asset("theme-init.js")}?v=2`}></script>
 {jsonLd.map((block) => (
   <script type="application/ld+json" set:html={JSON.stringify(block)} />
 ))}
