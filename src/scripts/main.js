@@ -220,6 +220,7 @@
     var status = $('[data-form-status]', form);
     var submit = $('[data-form-submit]', form);
     var submitLabel = submit ? submit.textContent : '';
+    var isSubmitting = false;
 
     var validators = {
       name: function (v) { return v.trim().length >= 2; },
@@ -255,12 +256,15 @@
 
     on(form, 'submit', function (e) {
       e.preventDefault();
+      if (isSubmitting) return;
       var ok = true;
       $$('[data-validate]', form).forEach(function (i) { if (!validateField(i)) ok = false; });
       if (!ok) { var bad = $('[aria-invalid="true"]', form); if (bad) bad.focus(); return; }
 
       var honey = $('[name="botcheck"]', form);
-      if (honey && honey.value) return;  // silent drop
+      // Checkboxes have the default value "on" even when unchecked. Use their
+      // checked state so the empty honeypot never drops genuine submissions.
+      if (honey && (honey.type === 'checkbox' ? honey.checked : String(honey.value || '').trim())) return;
 
       var key = form.getAttribute('data-access-key') || '';
       if (!key || key.indexOf('YOUR-') === 0) {
@@ -269,6 +273,7 @@
         return;
       }
 
+      isSubmitting = true;
       if (submit) { submit.disabled = true; submit.textContent = t.sending || 'Sending…'; }
       var data = new FormData(form);
 
@@ -277,20 +282,30 @@
         headers: { Accept: 'application/json' },
         body: data
       })
-        .then(function (r) { return r.json(); })
-        .then(function (json) {
-          if (json && json.success) {
+        .then(function (response) {
+          return response.text().then(function (body) {
+            var json = null;
+            try { json = JSON.parse(body); } catch (e) {}
+            return { ok: response.ok, status: response.status, json: json };
+          });
+        })
+        .then(function (result) {
+          var json = result.json;
+          if (result.ok && json && json.success) {
             showStatus('success', t.successTitle || 'Thank you.', t.successBody || '');
             form.reset();
             if (counterEl && messageEl) counterEl.textContent = '0 / ' + (messageEl.getAttribute('maxlength') || 1000);
           } else {
-            showStatus('error', t.errorTitle || 'That did not go through.', t.errorBody || '');
+            var detail = json && typeof json.message === 'string' ? json.message : (t.errorBody || '');
+            console.warn('[Mariam-Art] Web3Forms rejected the contact form:', result.status, detail);
+            showStatus('error', t.errorTitle || 'That did not go through.', detail);
           }
-        })
-        .catch(function () {
+        }).catch(function (error) {
+          console.warn('[Mariam-Art] Contact form request failed:', error && error.message ? error.message : error);
           showStatus('error', t.errorTitle || 'That did not go through.', t.errorBody || '');
         })
         .then(function () {
+          isSubmitting = false;
           if (submit) { submit.disabled = false; submit.textContent = submitLabel; }
         });
     });
@@ -298,16 +313,43 @@
     function showStatus(state, title, body) {
       if (!status) return;
       status.setAttribute('data-state', state);
-      status.innerHTML = '';
+      status.replaceChildren();
+      status.setAttribute('role', state === 'error' ? 'alert' : 'status');
+
+      var icon = document.createElement('span');
+      icon.className = 'form__status-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('stroke', 'currentColor');
+      svg.setAttribute('stroke-width', '1.8');
+      svg.setAttribute('stroke-linecap', 'round');
+      svg.setAttribute('stroke-linejoin', 'round');
+      if (state === 'success') {
+        var check = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        check.setAttribute('d', 'm5 12.5 4.2 4.2L19 7');
+        svg.appendChild(check);
+      } else {
+        var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', '12'); circle.setAttribute('cy', '12'); circle.setAttribute('r', '9');
+        var mark = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        mark.setAttribute('d', 'M12 8v5m0 3h.01');
+        svg.appendChild(circle); svg.appendChild(mark);
+      }
+      icon.appendChild(svg);
+
+      var copy = document.createElement('div');
       var h = document.createElement('p');
       h.className = 'h4'; h.textContent = title;
-      status.appendChild(h);
+      copy.appendChild(h);
       if (body) {
         var p = document.createElement('p');
         p.className = 'body-sm mt-xs'; p.textContent = body;
-        status.appendChild(p);
+        copy.appendChild(p);
       }
-      status.setAttribute('role', 'status');
+      status.appendChild(icon);
+      status.appendChild(copy);
       status.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
   }

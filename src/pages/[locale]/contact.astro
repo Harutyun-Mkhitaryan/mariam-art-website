@@ -94,7 +94,8 @@ const channels = ([
             <span>{tr(locale, "contact.submit")}</span></button>
           <p class="label-sm muted">{tr(locale, "contact.submitNote")}</p>
         </div>
-        <div class="form__status mt-sm" data-form-status></div>
+        <div class="form__status mt-sm" data-form-status role="status"
+             aria-live="polite" aria-atomic="true"></div>
         <noscript><p class="caption mt-sm">JavaScript is required to send this form —
           please write to <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.</p></noscript>
       </form>

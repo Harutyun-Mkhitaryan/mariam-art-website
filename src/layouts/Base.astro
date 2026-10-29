@@ -4,7 +4,7 @@ import Footer from "../components/Footer.astro";
 import SearchOverlay from "../components/SearchOverlay.astro";
 
 import {
-  ANALYTICS, BASE, DEFAULT_LOCALE, LOCALES, SEO, SITE,
+  ANALYTICS, BASE, CONTACT, DEFAULT_LOCALE, LOCALES, SEO, SITE,
   absolute, asset, url,
 } from "../lib/config";
 import { DICTS, localeMeta, tr } from "../lib/i18n";
@@ -51,7 +51,9 @@ const siteJs = {
     ...DICTS[locale].search,
     ...Object.fromEntries(
       ["sending", "successTitle", "successBody", "errorTitle", "errorBody", "errEmail"]
-        .map((k) => [k, DICTS[locale].contact[k]])),
+        .map((k) => [k, k === "errorBody"
+          ? DICTS[locale].contact[k].replace("{email}", CONTACT.email)
+          : DICTS[locale].contact[k]])),
     counter: DICTS[locale].gallery.counter,
     linkCopied: DICTS[locale].artwork.linkCopied,
     themeDark: DICTS[locale].nav.themeDark,

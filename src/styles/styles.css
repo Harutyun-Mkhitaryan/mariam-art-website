@@ -443,9 +443,32 @@ ul, ol { list-style: none; padding: 0; }
 .field[data-invalid="true"] .field__error { display: block; }
 .field__counter { margin-top: 6px; text-align: right; }
 
-.form__status { display: none; border: 1px solid var(--border); padding: var(--space-md); }
-.form__status[data-state="success"] { display: block; border-color: var(--gold); }
-.form__status[data-state="error"]   { display: block; border-color: #C25B44; }
+.form__status {
+  display: none; grid-template-columns: 22px minmax(0, 1fr); align-items: start; gap: 12px;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 14px 16px; background: var(--surface-2); color: var(--text);
+  overflow-wrap: anywhere;
+}
+.form__status[data-state="success"], .form__status[data-state="error"] {
+  display: grid; animation: form-status-in 220ms var(--ease) both;
+}
+.form__status[data-state="success"] {
+  border-color: #71875f; background: color-mix(in srgb, #71875f 9%, var(--surface));
+}
+.form__status[data-state="error"] {
+  border-color: #ad6653; background: color-mix(in srgb, #ad6653 8%, var(--surface));
+}
+.form__status-icon { display: grid; place-items: center; width: 22px; height: 22px; }
+.form__status-icon svg { display: block; width: 20px; height: 20px; }
+.form__status[data-state="success"] .form__status-icon { color: #71875f; }
+.form__status[data-state="error"] .form__status-icon { color: #ad6653; }
+@keyframes form-status-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .form__status[data-state="success"], .form__status[data-state="error"] { animation: none; }
+}
 .form__honey { position: absolute; left: -9999px; opacity: 0; }
 
 /* ---------------------------------------------------------------- 9. MEDIA */
