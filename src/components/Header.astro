@@ -29,7 +29,7 @@ const { locale, page, parts = [] } = Astro.props;
   </div>
 </header>
 
-<div class="drawer" id="drawer" data-drawer data-open="false" aria-hidden="true">
+<div class="drawer" id="drawer" data-drawer data-open="false" aria-hidden="true" inert>
   <div class="between">
     <Logo locale={locale} />
     <button class="icon-btn" type="button" data-drawer-close

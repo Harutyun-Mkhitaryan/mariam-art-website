@@ -44,7 +44,7 @@ const works = itemsSorted();
 
   <section class="section">
     <div class="wrap">
-      <div class="between" style="align-items:flex-end;gap:var(--space-lg)">
+      <div class="between gallery-toolbar" style="align-items:flex-end;gap:var(--space-lg)">
         <div class="filters" role="group" aria-label={tr(locale, "nav.gallery")}>
           <button class="filter" type="button" data-filter="all" aria-pressed="true">
             {tr(locale, "gallery.filterAll")}</button>
@@ -53,7 +53,7 @@ const works = itemsSorted();
               {field(c.name, locale)}</button>
           ))}
         </div>
-        <label class="row gap-xs">
+        <label class="row gap-xs gallery-sort">
           <span class="label-sm muted">{tr(locale, "gallery.sortLabel")}</span>
           <select class="field__input" data-gallery-sort name="sort"
                   aria-label={tr(locale, "gallery.sortLabel")}

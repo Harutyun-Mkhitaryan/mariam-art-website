@@ -62,6 +62,7 @@
     if (!drawer) return;
     drawer.setAttribute('data-open', String(open));
     drawer.setAttribute('aria-hidden', String(!open));
+    drawer.inert = !open;
     if (burger) burger.setAttribute('aria-expanded', String(open));
     document.body.style.overflow = open ? 'hidden' : '';
     if (open) { var f = drawer.querySelector('a, button'); if (f) f.focus(); }
@@ -70,6 +71,11 @@
   on(burger, 'click', function () { setDrawer(true); });
   on(drawerClose, 'click', function () { setDrawer(false); });
   if (drawer) $$('a', drawer).forEach(function (a) { on(a, 'click', function () { setDrawer(false); }); });
+  on(document, 'keydown', function (event) {
+    if (event.key === 'Escape' && drawer && drawer.getAttribute('data-open') === 'true') {
+      setDrawer(false);
+    }
+  });
 
   /* ------------------------------------------------------- reveal on scroll */
   var revealables = $$('.reveal');
