@@ -11,11 +11,7 @@
     "basePath": "",
     "_basePath_note": "Для GitHub Pages в подпапке укажите /имя-репозитория (например /mariam-art). Для Cloudflare Pages и своего домена оставьте пустым.",
     "defaultLocale": "en",
-    "locales": [
-      "hy",
-      "ru",
-      "en"
-    ],
+    "locales": ["hy", "ru", "en"],
     "themeDefault": "system"
   },
   "contact": {

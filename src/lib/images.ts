@@ -6,12 +6,16 @@ import type { ImageMetadata } from "astro";
  * (scripts/prepare-images.mjs). Here we only ask Astro for the responsive
  * widths and the two formats.
  */
-const modules = import.meta.glob<{ default: ImageMetadata }>(
-  "../images/*.{jpg,png}", { eager: true });
+const modules = import.meta.glob<{ default: ImageMetadata }>("../images/*.{jpg,png}", {
+  eager: true,
+});
 
 const MASTERS: Record<string, ImageMetadata> = {};
 for (const [path, mod] of Object.entries(modules)) {
-  const name = path.split("/").pop()!.replace(/\.(jpg|png)$/, "");
+  const name = path
+    .split("/")
+    .pop()!
+    .replace(/\.(jpg|png)$/, "");
   MASTERS[name] = mod.default;
 }
 
@@ -58,10 +62,12 @@ export async function responsive(slot: string): Promise<Responsive | null> {
   const widths = [...new Set(ladder)].sort((a, b) => b - a);
 
   const make = async (format: "webp" | "jpeg") =>
-    Promise.all(widths.map(async (width) => {
-      const img = await getImage({ src, width, format, quality: format === "webp" ? 76 : 78 });
-      return `${img.src} ${width}w`;
-    }));
+    Promise.all(
+      widths.map(async (width) => {
+        const img = await getImage({ src, width, format, quality: format === "webp" ? 76 : 78 });
+        return `${img.src} ${width}w`;
+      }),
+    );
 
   const [webp, jpg] = await Promise.all([make("webp"), make("jpeg")]);
   const widest = await getImage({ src, width: widths[0], format: "jpeg", quality: 78 });

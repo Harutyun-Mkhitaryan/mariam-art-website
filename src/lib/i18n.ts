@@ -28,8 +28,7 @@ export function tr(locale: string, path: string, vars?: Record<string, string | 
     if (found === undefined) continue;
     if (typeof found !== "string") return found as unknown as string;
     if (!vars) return found;
-    return Object.entries(vars).reduce(
-      (acc, [k, v]) => acc.replaceAll(`{${k}}`, String(v)), found);
+    return Object.entries(vars).reduce((acc, [k, v]) => acc.replaceAll(`{${k}}`, String(v)), found);
   }
   return path;
 }

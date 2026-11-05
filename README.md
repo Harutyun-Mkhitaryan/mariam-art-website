@@ -39,20 +39,20 @@ site-astro/
 
 Маршруты:
 
-| Файл | Адреса |
-|---|---|
-| `pages/index.astro` | `/` — выбор языка и редирект |
-| `pages/[locale]/index.astro` | `/hy/`, `/ru/`, `/en/` |
-| `pages/[locale]/gallery/index.astro` | `/…/gallery/` |
-| `pages/[locale]/gallery/[slug].astro` | страница каждой работы (74 × 3) |
-| `pages/[locale]/about.astro` | `/…/about/` |
-| `pages/[locale]/contact.astro` | `/…/contact/` |
-| `pages/404.astro` | `/404.html` |
-| `pages/sitemap.xml.ts` | `/sitemap.xml` с hreflang |
-| `pages/robots.txt.ts` | `/robots.txt` |
-| `pages/site.webmanifest.ts` | манифест PWA |
-| `pages/assets/icons.svg.ts` | спрайт иконок |
-| `pages/assets/favicon.svg.ts` | фавикон |
+| Файл                                   | Адреса                          |
+| -------------------------------------- | ------------------------------- |
+| `pages/index.astro`                    | `/` — выбор языка и редирект    |
+| `pages/[locale]/index.astro`           | `/hy/`, `/ru/`, `/en/`          |
+| `pages/[locale]/gallery/index.astro`   | `/…/gallery/`                   |
+| `pages/[locale]/gallery/[slug].astro`  | страница каждой работы (74 × 3) |
+| `pages/[locale]/about.astro`           | `/…/about/`                     |
+| `pages/[locale]/contact.astro`         | `/…/contact/`                   |
+| `pages/404.astro`                      | `/404.html`                     |
+| `pages/sitemap.xml.ts`                 | `/sitemap.xml` с hreflang       |
+| `pages/robots.txt.ts`                  | `/robots.txt`                   |
+| `pages/site.webmanifest.ts`            | манифест PWA                    |
+| `pages/assets/icons.svg.ts`            | спрайт иконок                   |
+| `pages/assets/favicon.svg.ts`          | фавикон                         |
 | `pages/assets/search/[locale].json.ts` | поисковый индекс на каждый язык |
 
 Всего 236 страниц, включая локализованные страницы работ.
@@ -257,17 +257,17 @@ npm run verify         # браузерное поведение + скринш�
 
 ## 9. Чем отличается от варианта A
 
-| | Вариант A (HTML/CSS/JS) | Вариант Б (Astro) |
-|---|---|---|
-| Сборка | `python3 build/build.py` (только Pillow) | `npm run build` |
-| Шаблоны | f-строки в одном Python-файле | компоненты `.astro` |
-| Картинки | Pillow, фиксированные имена | sharp (кадрирование) + Astro (размеры и форматы), хешированные имена, неиспользуемые оригиналы вырезаются из сборки |
-| CSS и JS | отдаются как есть | собираются с хешем в имени — кэш сбрасывается сам |
-| Проверка данных | нет | zod-схема, падает при сборке |
-| Типы | нет | TypeScript, `astro check` |
-| Зависимости | Python + Pillow | Node + 201 npm-пакет (плюс 76 для `astro check`) |
-| Размер `dist/` | 8,6 МБ | 8,8 МБ |
-| Результат | одинаковый | одинаковый |
+|                 | Вариант A (HTML/CSS/JS)                  | Вариант Б (Astro)                                                                                                   |
+| --------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Сборка          | `python3 build/build.py` (только Pillow) | `npm run build`                                                                                                     |
+| Шаблоны         | f-строки в одном Python-файле            | компоненты `.astro`                                                                                                 |
+| Картинки        | Pillow, фиксированные имена              | sharp (кадрирование) + Astro (размеры и форматы), хешированные имена, неиспользуемые оригиналы вырезаются из сборки |
+| CSS и JS        | отдаются как есть                        | собираются с хешем в имени — кэш сбрасывается сам                                                                   |
+| Проверка данных | нет                                      | zod-схема, падает при сборке                                                                                        |
+| Типы            | нет                                      | TypeScript, `astro check`                                                                                           |
+| Зависимости     | Python + Pillow                          | Node + 201 npm-пакет (плюс 76 для `astro check`)                                                                    |
+| Размер `dist/`  | 8,6 МБ                                   | 8,8 МБ                                                                                                              |
+| Результат       | одинаковый                               | одинаковый                                                                                                          |
 
 Вариант A проще: ни Node, ни npm, ни обновлений зависимостей — нужен только
 Python. Вариант Б удобнее, если сайт будет расти: компоненты вместо строк,
@@ -277,10 +277,10 @@ Python. Вариант Б удобнее, если сайт будет раст�
 
 ## 10. Заглушки, которые нужно заменить
 
-| Где | Что |
-|---|---|
-| `site.config.json → forms.web3formsAccessKey` | ключ Web3Forms |
-| `site.config.json → contact` | почта, телефон, WhatsApp |
-| `site.config.json → social` | Instagram, Facebook, WhatsApp |
-| `site.config.json → site.domain` | адрес после покупки домена |
-| `public/assets/artworks/` | настоящие фотографии работ |
+| Где                                           | Что                           |
+| --------------------------------------------- | ----------------------------- |
+| `site.config.json → forms.web3formsAccessKey` | ключ Web3Forms                |
+| `site.config.json → contact`                  | почта, телефон, WhatsApp      |
+| `site.config.json → social`                   | Instagram, Facebook, WhatsApp |
+| `site.config.json → site.domain`              | адрес после покупки домена    |
+| `public/assets/artworks/`                     | настоящие фотографии работ    |

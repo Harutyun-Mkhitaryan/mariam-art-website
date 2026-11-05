@@ -1,6 +1,4 @@
-import {
-  CONTACT, LOCALES, SITE, SOCIAL, absolute, artworkUrl, asset, url,
-} from "./config";
+import { CONTACT, LOCALES, SITE, SOCIAL, absolute, artworkUrl, asset, url } from "./config";
 import { field, tr, trRaw } from "./i18n";
 import { category, type Artwork } from "./artworks";
 
@@ -59,7 +57,10 @@ export function breadcrumbLd(trail: [string, string][]): Ld {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: trail.map(([name, u], i) => ({
-      "@type": "ListItem", position: i + 1, name, item: absolute(u),
+      "@type": "ListItem",
+      position: i + 1,
+      name,
+      item: absolute(u),
     })),
   };
 }
@@ -81,20 +82,28 @@ export function artworkLd(locale: string, item: Artwork, fallbackImage: string):
     isAccessibleForFree: true,
     ...(item.medium ? { artMedium: field(item.medium, locale) } : {}),
     ...(item.year ? { dateCreated: String(item.year) } : {}),
-    ...(item.size ? {
-      width: { "@type": "Distance", name: `${item.size.cm.split("×")[0].trim()} cm` },
-      height: { "@type": "Distance", name: `${item.size.cm.split("×")[1]?.trim() ?? item.size.cm} cm` },
-    } : {}),
-    ...(item.availability ? {
-      offers: {
-        "@type": "Offer",
-        availability: item.availability === "available"
-          ? "https://schema.org/InStock"
-          : "https://schema.org/SoldOut",
-        url: absolute(url(locale, "contact")),
-        seller: { "@id": ARTIST_ID() },
-      },
-    } : {}),
+    ...(item.size
+      ? {
+          width: { "@type": "Distance", name: `${item.size.cm.split("×")[0].trim()} cm` },
+          height: {
+            "@type": "Distance",
+            name: `${item.size.cm.split("×")[1]?.trim() ?? item.size.cm} cm`,
+          },
+        }
+      : {}),
+    ...(item.availability
+      ? {
+          offers: {
+            "@type": "Offer",
+            availability:
+              item.availability === "available"
+                ? "https://schema.org/InStock"
+                : "https://schema.org/SoldOut",
+            url: absolute(url(locale, "contact")),
+            seller: { "@id": ARTIST_ID() },
+          },
+        }
+      : {}),
   };
 }
 
@@ -104,7 +113,8 @@ export function faqLd(locale: string): Ld {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faq.map((q) => ({
-      "@type": "Question", name: q.q,
+      "@type": "Question",
+      name: q.q,
       acceptedAnswer: { "@type": "Answer", text: q.a },
     })),
   };
@@ -121,7 +131,8 @@ export function collectionLd(locale: string, works: Artwork[]): Ld {
       "@type": "ItemList",
       numberOfItems: works.length,
       itemListElement: works.map((w, i) => ({
-        "@type": "ListItem", position: i + 1,
+        "@type": "ListItem",
+        position: i + 1,
         url: absolute(artworkUrl(locale, w.slug)),
         name: field(w.title, locale),
       })),

@@ -2,12 +2,25 @@
 import { PAGES, PAGE_SEG, url } from "../lib/config";
 import { tr } from "../lib/i18n";
 
-interface Props { locale: string; page: string; class?: string }
+interface Props {
+  locale: string;
+  page: string;
+  class?: string;
+}
 const { locale, page, class: cls = "nav" } = Astro.props;
 ---
-<nav class={cls} aria-label={tr(locale, "nav.menu")}>{
-  PAGES.map((key) => (
-    <a class="nav__link" href={url(locale, PAGE_SEG[key])}
-       aria-current={key === page ? "page" : undefined}>{tr(locale, "nav." + key)}</a>
-  ))
-}</nav>
+
+<nav
+  class={cls}
+  aria-label={tr(locale, "nav.menu")}
+>
+  {PAGES.map((key) => (
+    <a
+      class="nav__link"
+      href={url(locale, PAGE_SEG[key])}
+      aria-current={key === page ? "page" : undefined}
+    >
+      {tr(locale, "nav." + key)}
+    </a>
+  ))}
+</nav>

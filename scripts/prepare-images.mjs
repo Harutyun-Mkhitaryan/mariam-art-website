@@ -109,7 +109,10 @@ async function alphaBox(input) {
     .raw()
     .toBuffer({ resolveWithObject: true });
   const { width, height, channels } = info;
-  let x0 = width, y0 = height, x1 = -1, y1 = -1;
+  let x0 = width,
+    y0 = height,
+    x1 = -1,
+    y1 = -1;
   for (let y = 0; y < height; y++) {
     const row = y * width * channels;
     for (let x = 0; x < width; x++) {
@@ -198,7 +201,9 @@ for (const [name, spec] of Object.entries(SLOTS)) if (await buildSlot(name, spec
 if (await buildBranch()) made++;
 if (await buildOg("dark")) made++;
 
-console.log(made ? `images: prepared ${made} masters in src/images/` : "images: masters already present");
+console.log(
+  made ? `images: prepared ${made} masters in src/images/` : "images: masters already present",
+);
 
 /* ---------------------------------------------------------------- app icons
  * Fixed paths in the manifest, so these go straight into public/assets/.
@@ -220,6 +225,8 @@ for (const size of [180, 192, 512]) {
   <path d="M17 13 c -4 -1, -6 -4, -6 -6 c 3 0 6 3 6 6Z" fill="#C9A271" opacity=".85"/>
   <circle cx="20" cy="4.5" r="1.5" fill="#C9A271"/>
 </svg>`);
-  await sharp(mark, { density: 96 * k }).png({ compressionLevel: 9 }).toFile(out);
+  await sharp(mark, { density: 96 * k })
+    .png({ compressionLevel: 9 })
+    .toFile(out);
   console.log(`icon: ${path.basename(out)}`);
 }

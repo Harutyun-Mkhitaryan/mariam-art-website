@@ -97,6 +97,33 @@
         "ru": "Цвет и композиция",
         "hy": "Գույն և հորինվածք"
       }
+    },
+    {
+      "id": "photography",
+      "name": {
+        "en": "Photography",
+        "ru": "Фотография",
+        "hy": "Լուսանկարչություն"
+      },
+      "tagline": {
+        "en": "Photographs by Mariam",
+        "ru": "Фотографии Мариам",
+        "hy": "Մարիամի լուսանկարները"
+      }
+    },
+    {
+      "id": "bags",
+      "visible": false,
+      "name": {
+        "en": "Hand-painted Bags",
+        "ru": "Расписные сумки",
+        "hy": "Ձեռքով նկարված պայուսակներ"
+      },
+      "tagline": {
+        "en": "Art to carry",
+        "ru": "Искусство, которое можно взять с собой",
+        "hy": "Արվեստ, որը կարելի է վերցնել ձեզ հետ"
+      }
     }
   ],
   "items": [
@@ -372,9 +399,7 @@
       "category": "cups",
       "images": {
         "main": "cups-12.webp",
-        "details": [
-          "cups-12-detail-1.webp"
-        ]
+        "details": ["cups-12-detail-1.webp"]
       },
       "updated": "2026-10-29",
       "title": {
@@ -413,9 +438,7 @@
       "category": "clothing",
       "images": {
         "main": "clothing-02.webp",
-        "details": [
-          "clothing-02-detail-1.webp"
-        ]
+        "details": ["clothing-02-detail-1.webp"]
       },
       "updated": "2026-10-29",
       "title": {
@@ -835,9 +858,7 @@
       "category": "drawings",
       "images": {
         "main": "drawings-04.webp",
-        "details": [
-          "drawings-04-detail-1.webp"
-        ]
+        "details": ["drawings-04-detail-1.webp"]
       },
       "updated": "2026-10-29",
       "title": {
@@ -932,9 +953,7 @@
       "category": "drawings",
       "images": {
         "main": "drawings-09.webp",
-        "details": [
-          "drawings-09-detail-1.webp"
-        ]
+        "details": ["drawings-09-detail-1.webp"]
       },
       "updated": "2026-10-29",
       "title": {
@@ -1048,9 +1067,7 @@
       "category": "drawings",
       "images": {
         "main": "drawings-15.webp",
-        "details": [
-          "drawings-15-detail-1.webp"
-        ]
+        "details": ["drawings-15-detail-1.webp"]
       },
       "updated": "2026-10-29",
       "title": {
@@ -1069,9 +1086,7 @@
       "category": "drawings",
       "images": {
         "main": "drawings-16.webp",
-        "details": [
-          "drawings-16-detail-1.webp"
-        ]
+        "details": ["drawings-16-detail-1.webp"]
       },
       "updated": "2026-10-29",
       "title": {
@@ -1242,9 +1257,7 @@
       "category": "drawings",
       "images": {
         "main": "drawings-25.webp",
-        "details": [
-          "drawings-25-detail-1.webp"
-        ]
+        "details": ["drawings-25-detail-1.webp"]
       },
       "updated": "2026-10-29",
       "title": {
@@ -1523,6 +1536,64 @@
         "en": "This original artwork, Painting 08, is presented in the Mariam-Art portfolio gallery.",
         "ru": "Работа «Работа 08» входит в онлайн-галерею портфолио Mariam-Art.",
         "hy": "«Գեղանկար 08» աշխատանքը ներկայացված է Mariam-Art պորտֆոլիոյի առցանց պատկերասրահում։"
+      }
+    },
+    {
+      "slug": "photography-01",
+      "category": "photography",
+      "images": { "main": "photography-01.webp", "details": [] },
+      "updated": "2026-11-05",
+      "title": { "en": "Photo 01", "ru": "Фотография 01", "hy": "Լուսանկար 01" },
+      "description": {
+        "en": "A photograph by Mariam, presented in the Mariam-Art portfolio.",
+        "ru": "Фотография Мариам в портфолио Mariam-Art.",
+        "hy": "Մարիամի լուսանկարը՝ Mariam-Art պորտֆոլիոյում։"
+      }
+    },
+    {
+      "slug": "photography-02",
+      "category": "photography",
+      "images": { "main": "photography-02.webp", "details": [] },
+      "updated": "2026-11-05",
+      "title": { "en": "Photo 02", "ru": "Фотография 02", "hy": "Լուսանկար 02" },
+      "description": {
+        "en": "A photograph by Mariam, presented in the Mariam-Art portfolio.",
+        "ru": "Фотография Мариам в портфолио Mariam-Art.",
+        "hy": "Մարիամի լուսանկարը՝ Mariam-Art պորտֆոլիոյում։"
+      }
+    },
+    {
+      "slug": "photography-03",
+      "category": "photography",
+      "images": { "main": "photography-03.webp", "details": [] },
+      "updated": "2026-11-05",
+      "title": { "en": "Photo 03", "ru": "Фотография 03", "hy": "Լուսանկար 03" },
+      "description": {
+        "en": "A photograph by Mariam, presented in the Mariam-Art portfolio.",
+        "ru": "Фотография Мариам в портфолио Mariam-Art.",
+        "hy": "Մարիամի լուսանկարը՝ Mariam-Art պորտֆոլիոյում։"
+      }
+    },
+    {
+      "slug": "photography-04",
+      "category": "photography",
+      "images": {
+        "main": "photography-04.webp",
+        "details": [
+          "photography-04-detail-1.webp",
+          "photography-04-detail-2.webp",
+          "photography-04-detail-3.webp",
+          "photography-04-detail-4.webp",
+          "photography-04-detail-5.webp",
+          "photography-04-detail-6.webp"
+        ]
+      },
+      "updated": "2026-11-05",
+      "title": { "en": "Photo 04", "ru": "Фотография 04", "hy": "Լուսանկար 04" },
+      "description": {
+        "en": "A photograph by Mariam, presented in the Mariam-Art portfolio.",
+        "ru": "Фотография Мариам в портфолио Mariam-Art.",
+        "hy": "Մարիամի լուսանկարը՝ Mariam-Art պորտֆոլիոյում։"
       }
     }
   ]

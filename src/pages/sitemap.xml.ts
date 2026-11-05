@@ -1,6 +1,14 @@
 import type { APIRoute } from "astro";
 import {
-  DEFAULT_LOCALE, LOCALES, PAGES, PAGE_SEG, TODAY, absolute, artworkUrl, asset, url,
+  DEFAULT_LOCALE,
+  LOCALES,
+  PAGES,
+  PAGE_SEG,
+  TODAY,
+  absolute,
+  artworkUrl,
+  asset,
+  url,
 } from "../lib/config";
 import { ITEMS, type Artwork } from "../lib/artworks";
 import { responsive } from "../lib/images";
@@ -25,12 +33,23 @@ function artworkPhotos(item: Artwork): string[] {
  *  Only images the page actually renders belong here. */
 async function pageImages(key: string): Promise<string[]> {
   const slots =
-    key === "home" ? ["hero-dark", "about-portrait", "banner-dark"]
-    : key === "gallery" ? ["gallery-hero-dark"]
-    : key === "about" ? ["about-hero-dark", "banner-dark",
-                         "process-1", "process-2", "process-3", "process-4",
-                         "studio-1", "studio-2", "studio-3"]
-    : ["contact-hero-dark"];
+    key === "home"
+      ? ["hero-dark", "about-portrait", "banner-dark"]
+      : key === "gallery"
+        ? ["gallery-hero-dark"]
+        : key === "about"
+          ? [
+              "about-hero-dark",
+              "banner-dark",
+              "process-1",
+              "process-2",
+              "process-3",
+              "process-4",
+              "studio-1",
+              "studio-2",
+              "studio-3",
+            ]
+          : ["contact-hero-dark"];
 
   const out = (await Promise.all(slots.map(slotUrl))).filter(Boolean) as string[];
   if (key === "gallery") for (const a of ITEMS) out.push(...artworkPhotos(a));
@@ -43,18 +62,26 @@ function lastmod(item?: Artwork): string {
 }
 
 function entry(
-  loc: string, priority: string, changefreq: string,
-  alts: Record<string, string>, images: string[] = [], when = TODAY,
+  loc: string,
+  priority: string,
+  changefreq: string,
+  alts: Record<string, string>,
+  images: string[] = [],
+  when = TODAY,
 ) {
-  const links = Object.entries(alts)
-    .map(([l, a]) => `<xhtml:link rel="alternate" hreflang="${l}" href="${absolute(a)}"/>`)
-    .join("")
-    + `<xhtml:link rel="alternate" hreflang="x-default" href="${absolute(alts[DEFAULT_LOCALE])}"/>`;
+  const links =
+    Object.entries(alts)
+      .map(([l, a]) => `<xhtml:link rel="alternate" hreflang="${l}" href="${absolute(a)}"/>`)
+      .join("") +
+    `<xhtml:link rel="alternate" hreflang="x-default" href="${absolute(alts[DEFAULT_LOCALE])}"/>`;
   // Google reads only <image:loc>; the other image tags were retired in 2022.
   const pics = images
-    .map((i) => `<image:image><image:loc>${esc(i)}</image:loc></image:image>`).join("");
-  return `<url><loc>${absolute(loc)}</loc><lastmod>${when}</lastmod>`
-    + `<changefreq>${changefreq}</changefreq><priority>${priority}</priority>${links}${pics}</url>`;
+    .map((i) => `<image:image><image:loc>${esc(i)}</image:loc></image:image>`)
+    .join("");
+  return (
+    `<url><loc>${absolute(loc)}</loc><lastmod>${when}</lastmod>` +
+    `<changefreq>${changefreq}</changefreq><priority>${priority}</priority>${links}${pics}</url>`
+  );
 }
 
 export const GET: APIRoute = async () => {
@@ -77,11 +104,12 @@ export const GET: APIRoute = async () => {
     }
   }
 
-  const body = `<?xml version="1.0" encoding="UTF-8"?>\n`
-    + `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" `
-    + `xmlns:xhtml="http://www.w3.org/1999/xhtml" `
-    + `xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n`
-    + `${urls.join("\n")}\n</urlset>\n`;
+  const body =
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ` +
+    `xmlns:xhtml="http://www.w3.org/1999/xhtml" ` +
+    `xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n` +
+    `${urls.join("\n")}\n</urlset>\n`;
 
   return new Response(body, { headers: { "Content-Type": "application/xml; charset=utf-8" } });
 };

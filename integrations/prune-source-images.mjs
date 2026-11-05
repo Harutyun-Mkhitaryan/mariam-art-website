@@ -20,7 +20,7 @@ async function walk(dir) {
   const out = [];
   for (const e of await fs.readdir(dir, { withFileTypes: true })) {
     const full = path.join(dir, e.name);
-    if (e.isDirectory()) out.push(...await walk(full));
+    if (e.isDirectory()) out.push(...(await walk(full)));
     else out.push(full);
   }
   return out;
@@ -40,12 +40,14 @@ export default function pruneSourceImages({ dir = "assets/_a" } = {}) {
         }
 
         const all = await walk(root);
-        const haystack = (await Promise.all(
-          all.filter((f) => TEXT.has(path.extname(f)))
-             .map((f) => fs.readFile(f, "utf-8")),
-        )).join("\n");
+        const haystack = (
+          await Promise.all(
+            all.filter((f) => TEXT.has(path.extname(f))).map((f) => fs.readFile(f, "utf-8")),
+          )
+        ).join("\n");
 
-        let removed = 0, bytes = 0;
+        let removed = 0,
+          bytes = 0;
         for (const file of await walk(assetDir)) {
           if (!PRUNABLE.has(path.extname(file))) continue;
           const name = path.basename(file);
@@ -56,8 +58,10 @@ export default function pruneSourceImages({ dir = "assets/_a" } = {}) {
         }
 
         if (removed) {
-          logger.info(`pruned ${removed} unreferenced image${removed === 1 ? "" : "s"} `
-            + `(${(bytes / 1048576).toFixed(1)} MB)`);
+          logger.info(
+            `pruned ${removed} unreferenced image${removed === 1 ? "" : "s"} ` +
+              `(${(bytes / 1048576).toFixed(1)} MB)`,
+          );
         }
       },
     },

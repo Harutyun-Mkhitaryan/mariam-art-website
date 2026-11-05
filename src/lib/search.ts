@@ -1,6 +1,6 @@
 import { PAGES, PAGE_SEG, TODAY, artworkUrl, asset, url } from "./config";
 import { field, tr, trRaw } from "./i18n";
-import { CATEGORIES, ITEMS, category, countIn, itemsSorted } from "./artworks";
+import { PUBLIC_CATEGORIES, ITEMS, category, countIn, itemsSorted } from "./artworks";
 
 export interface Entry {
   type: "work" | "category" | "page" | "faq";
@@ -15,13 +15,26 @@ export interface Entry {
 
 /** Which copy from each page feeds the free-text field of its search entry. */
 const PAGE_TEXT: Record<string, string[]> = {
-  home: ["home.heroBody", "home.aboutBody", "home.valuesBody",
-         "home.bannerQuote", "brand.tagline", "home.worksKicker"],
+  home: [
+    "home.heroBody",
+    "home.aboutBody",
+    "home.valuesBody",
+    "home.bannerQuote",
+    "brand.tagline",
+    "home.worksKicker",
+  ],
   gallery: ["gallery.body", "gallery.quote", "gallery.description"],
-  about: ["about.body", "about.quote", "about.processBody", "about.studioBody",
-          "about.step1Body", "about.step2Body", "about.step3Body", "about.step4Body"],
-  contact: ["contact.body", "contact.detailsKicker", "contact.followQuote",
-            "contact.description"],
+  about: [
+    "about.body",
+    "about.quote",
+    "about.processBody",
+    "about.studioBody",
+    "about.step1Body",
+    "about.step2Body",
+    "about.step3Body",
+    "about.step4Body",
+  ],
+  contact: ["contact.body", "contact.detailsKicker", "contact.followQuote", "contact.description"],
 };
 
 export function buildIndex(locale: string) {
@@ -33,23 +46,34 @@ export function buildIndex(locale: string) {
       type: "work",
       title: field(a.title, locale),
       subtitle: [field(cat.name, locale), a.year].filter(Boolean).join(" · "),
-      text: [field(a.description, locale), a.medium ? field(a.medium, locale) : "",
-             a.size?.cm ?? "", a.year ? String(a.year) : ""].filter(Boolean).join(" "),
-      tags: [field(cat.name, locale),
-             ...(a.availability ? [tr(locale, "artwork." + (a.availability === "sold" ? "sold" : "available"))] : [])],
+      text: [
+        field(a.description, locale),
+        a.medium ? field(a.medium, locale) : "",
+        a.size?.cm ?? "",
+        a.year ? String(a.year) : "",
+      ]
+        .filter(Boolean)
+        .join(" "),
+      tags: [
+        field(cat.name, locale),
+        ...(a.availability
+          ? [tr(locale, "artwork." + (a.availability === "sold" ? "sold" : "available"))]
+          : []),
+      ],
       url: artworkUrl(locale, a.slug),
       image: a.images?.main ? asset("artworks/" + a.images.main) : "",
       weight: a.featured ? 30 : 10,
     });
   }
 
-  for (const c of CATEGORIES) {
+  for (const c of PUBLIC_CATEGORIES) {
     entries.push({
       type: "category",
       title: field(c.name, locale),
       subtitle: field(c.tagline, locale),
       text: ITEMS.filter((a) => a.category === c.id)
-                 .map((a) => field(a.title, locale)).join(" "),
+        .map((a) => field(a.title, locale))
+        .join(" "),
       tags: [String(countIn(c.id))],
       url: url(locale, "gallery") + "?c=" + c.id,
       image: "",

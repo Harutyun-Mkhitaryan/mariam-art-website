@@ -8,6 +8,7 @@ export interface Category {
   id: string;
   name: Localised;
   tagline: Localised;
+  visible?: boolean;
 }
 
 export interface Artwork {
@@ -36,6 +37,7 @@ const categorySchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   name: localised,
   tagline: localised,
+  visible: z.boolean().optional(),
 });
 
 const artworkSchema = z.object({
@@ -45,13 +47,18 @@ const artworkSchema = z.object({
   featured: z.boolean().optional(),
   availability: z.enum(["available", "sold", "commission"]).optional(),
   size: z.object({ cm: z.string(), in: z.string() }).optional(),
-  images: z.object({
-    main: z.string().optional(),
-    gallery: z.array(z.string()).optional(),
-    details: z.array(z.string()).optional(),
-  }).optional(),
+  images: z
+    .object({
+      main: z.string().optional(),
+      gallery: z.array(z.string()).optional(),
+      details: z.array(z.string()).optional(),
+    })
+    .optional(),
   // optional YYYY-MM-DD; drives <lastmod> in the sitemap when present
-  updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  updated: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/)
+    .optional(),
   title: localised,
   medium: localised.optional(),
   description: localised,
@@ -61,21 +68,28 @@ function parse<T>(schema: z.ZodType<T>, value: unknown, what: string): T {
   const result = schema.safeParse(value);
   if (!result.success) {
     const lines = result.error.issues
-      .map((i) => `  ${what}[${i.path.join(".")}]: ${i.message}`).join("\n");
+      .map((i) => `  ${what}[${i.path.join(".")}]: ${i.message}`)
+      .join("\n");
     throw new Error(`src/data/artworks.json is not valid:\n${lines}`);
   }
   return result.data;
 }
 
 export const CATEGORIES = parse(
-  z.array(categorySchema), data.categories, "categories") as Category[];
+  z.array(categorySchema),
+  data.categories,
+  "categories",
+) as Category[];
+export const PUBLIC_CATEGORIES = CATEGORIES.filter((c) => c.visible !== false);
 export const ITEMS = parse(z.array(artworkSchema), data.items, "items") as Artwork[];
 
 const ids = new Set(CATEGORIES.map((c) => c.id));
 for (const a of ITEMS) {
   if (!ids.has(a.category)) {
-    throw new Error(`artworks.json: "${a.slug}" uses unknown category "${a.category}" ` +
-      `(known: ${[...ids].join(", ")})`);
+    throw new Error(
+      `artworks.json: "${a.slug}" uses unknown category "${a.category}" ` +
+        `(known: ${[...ids].join(", ")})`,
+    );
   }
 }
 if (new Set(ITEMS.map((a) => a.slug)).size !== ITEMS.length) {
@@ -88,8 +102,8 @@ export function category(id: string): Category {
 
 /** Featured first, then in the order the categories are declared, then by slug. */
 export function itemsSorted(): Artwork[] {
-  const order = new Map(CATEGORIES.map((c, i) => [c.id, i]));
-  return [...ITEMS].sort((a, b) => {
+  const order = new Map(PUBLIC_CATEGORIES.map((c, i) => [c.id, i]));
+  return ITEMS.filter((a) => PUBLIC_CATEGORIES.some((c) => c.id === a.category)).sort((a, b) => {
     const f = Number(!a.featured) - Number(!b.featured);
     if (f) return f;
     const c = (order.get(a.category) ?? 99) - (order.get(b.category) ?? 99);
@@ -99,14 +113,18 @@ export function itemsSorted(): Artwork[] {
 }
 
 export function featured(limit = 5): Artwork[] {
-  const picked = itemsSorted().filter((a) => a.featured).slice(0, limit);
+  const picked = itemsSorted()
+    .filter((a) => a.featured)
+    .slice(0, limit);
   return picked.length ? picked : itemsSorted().slice(0, limit);
 }
 
 /** Three neighbours: same category first, topped up from the rest. */
 export function related(item: Artwork, limit = 3): Artwork[] {
   const all = itemsSorted();
-  const out = all.filter((a) => a.category === item.category && a.slug !== item.slug).slice(0, limit);
+  const out = all
+    .filter((a) => a.category === item.category && a.slug !== item.slug)
+    .slice(0, limit);
   for (const a of all) {
     if (out.length >= limit) break;
     if (a.slug !== item.slug && !out.includes(a)) out.push(a);

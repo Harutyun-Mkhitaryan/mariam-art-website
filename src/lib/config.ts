@@ -22,7 +22,10 @@ export const TODAY = new Date().toISOString().slice(0, 10);
 
 export const PAGES = ["home", "gallery", "about", "contact"] as const;
 export const PAGE_SEG: Record<string, string> = {
-  home: "", gallery: "gallery", about: "about", contact: "contact",
+  home: "",
+  gallery: "gallery",
+  about: "about",
+  contact: "contact",
 };
 
 /** Site-absolute URL for a locale + path segments, always with a trailing slash. */

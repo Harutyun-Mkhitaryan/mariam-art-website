@@ -6,9 +6,12 @@ const cfg = JSON.parse(readFileSync(new URL("./site.config.json", import.meta.ur
 const repository = process.env.GITHUB_REPOSITORY;
 const isGitHubPages = process.env.GITHUB_ACTIONS === "true" && Boolean(repository);
 const [repositoryOwner, repositoryName] = (repository || "").split("/");
-const isAccountPages = repositoryName?.toLowerCase() === `${repositoryOwner?.toLowerCase()}.github.io`;
+const isAccountPages =
+  repositoryName?.toLowerCase() === `${repositoryOwner?.toLowerCase()}.github.io`;
 const base = isGitHubPages
-  ? (isAccountPages ? "" : `/${repositoryName}`)
+  ? isAccountPages
+    ? ""
+    : `/${repositoryName}`
   : cfg.site.basePath.replace(/\/$/, "");
 const site = isGitHubPages
   ? `https://${repositoryOwner}.github.io`

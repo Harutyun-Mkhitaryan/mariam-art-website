@@ -5,7 +5,7 @@ import WorkCard from "../../../components/WorkCard.astro";
 
 import { url } from "../../../lib/config";
 import { field, localePaths, tr } from "../../../lib/i18n";
-import { CATEGORIES, itemsSorted } from "../../../lib/artworks";
+import { PUBLIC_CATEGORIES, itemsSorted } from "../../../lib/artworks";
 import { breadcrumbLd, collectionLd } from "../../../lib/seo";
 
 export const getStaticPaths = () => localePaths();
@@ -13,6 +13,7 @@ export const getStaticPaths = () => localePaths();
 const { locale } = Astro.params as { locale: string };
 const works = itemsSorted();
 ---
+
 <Base
   locale={locale}
   page="gallery"
@@ -28,13 +29,24 @@ const works = itemsSorted();
   ]}
 >
   <section class="page-hero hero hero--short">
-    <div class="hero__media"><Picture slot="gallery-hero-dark" sizes="100vw" eager ratio={false} /></div>
-    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="hero__media">
+      <Picture
+        slot="gallery-hero-dark"
+        sizes="100vw"
+        eager
+        ratio={false}
+      />
+    </div>
+    <div
+      class="hero__scrim"
+      aria-hidden="true"
+    ></div>
     <span class="side-label side-label--right">{tr(locale, "home.sideLeft")}</span>
     <div class="wrap page-hero__inner">
       <p class="eyebrow">{tr(locale, "gallery.kicker")}</p>
       <h1 class="h1 mt-sm">
-        {tr(locale, "gallery.heading1")} {tr(locale, "gallery.heading2")} {tr(locale, "gallery.heading3")}
+        {tr(locale, "gallery.heading1")} {tr(locale, "gallery.heading2")}{" "}
+        {tr(locale, "gallery.heading3")}
       </h1>
       <p class="body-lg mt-md measure">{tr(locale, "gallery.body")}</p>
       <p class="quote-sm mt-lg">{tr(locale, "gallery.quote")}</p>
@@ -44,35 +56,80 @@ const works = itemsSorted();
 
   <section class="section">
     <div class="wrap">
-      <div class="between gallery-toolbar" style="align-items:flex-end;gap:var(--space-lg)">
-        <div class="filters" role="group" aria-label={tr(locale, "nav.gallery")}>
-          <button class="filter" type="button" data-filter="all" aria-pressed="true">
-            {tr(locale, "gallery.filterAll")}</button>
-          {CATEGORIES.map((c) => (
-            <button class="filter" type="button" data-filter={c.id} aria-pressed="false">
-              {field(c.name, locale)}</button>
+      <div
+        class="between gallery-toolbar"
+        style="align-items:flex-end;gap:var(--space-lg)"
+      >
+        <div
+          class="filters"
+          role="group"
+          aria-label={tr(locale, "nav.gallery")}
+        >
+          <button
+            class="filter"
+            type="button"
+            data-filter="all"
+            aria-pressed="true"
+          >
+            {tr(locale, "gallery.filterAll")}
+          </button>
+          {PUBLIC_CATEGORIES.map((c) => (
+            <button
+              class="filter"
+              type="button"
+              data-filter={c.id}
+              aria-pressed="false"
+            >
+              {field(c.name, locale)}
+            </button>
           ))}
         </div>
         <label class="row gap-xs gallery-sort">
           <span class="label-sm muted">{tr(locale, "gallery.sortLabel")}</span>
-          <select class="field__input" data-gallery-sort name="sort"
-                  aria-label={tr(locale, "gallery.sortLabel")}
-                  style="min-height:40px;padding:6px 12px;width:auto">
+          <select
+            class="field__input"
+            data-gallery-sort
+            name="sort"
+            aria-label={tr(locale, "gallery.sortLabel")}
+            style="min-height:40px;padding:6px 12px;width:auto"
+          >
             <option value="featured">{tr(locale, "gallery.sortFeatured")}</option>
             <option value="title">{tr(locale, "gallery.sortTitle")}</option>
           </select>
         </label>
       </div>
 
-      <div class="grid grid--gallery mt-xl" data-gallery>{
-        works.map((w, i) => <WorkCard item={w} locale={locale} index={i + 1} />)
-      }</div>
-
-      <div class="text-center mt-xl" data-gallery-empty hidden>
-        <p class="body">{tr(locale, "gallery.empty")}</p>
-        <button class="btn mt-md" type="button" data-filter="all">{tr(locale, "gallery.emptyAction")}</button>
+      <div
+        class="grid grid--gallery mt-xl"
+        data-gallery
+      >
+        {works.map((w, i) => (
+          <WorkCard
+            item={w}
+            locale={locale}
+            index={i + 1}
+          />
+        ))}
       </div>
-      <p class="label-sm muted text-center mt-xl" data-gallery-counter></p>
+
+      <div
+        class="text-center mt-xl"
+        data-gallery-empty
+        hidden
+      >
+        <p class="body">{tr(locale, "gallery.empty")}</p>
+        <button
+          class="btn mt-md"
+          type="button"
+          data-filter="all"
+        >
+          {tr(locale, "gallery.emptyAction")}
+        </button>
+      </div>
+      <p
+        class="label-sm muted text-center mt-xl"
+        data-gallery-counter
+      ></p>
     </div>
   </section>
 </Base>

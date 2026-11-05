@@ -14,21 +14,113 @@ const SOURCE = process.argv[2];
 if (!SOURCE) throw new Error("Pass the folder containing the numbered JPEG photographs.");
 
 const categories = [
-  { id: "botanical", name: { en: "Botanical / Mixed Media", ru: "Ботаника / Смешанная техника", hy: "Բուսական / Խառը տեխնիկա" }, tagline: { en: "Nature in a new light", ru: "Природа в новом свете", hy: "Բնությունը նոր լույսի ներքո" } },
-  { id: "cups", name: { en: "Hand-painted Cups", ru: "Расписные чашки", hy: "Ձեռքով նկարված բաժակներ" }, tagline: { en: "Art for everyday rituals", ru: "Искусство для повседневных ритуалов", hy: "Արվեստ՝ առօրյա ծեսերի համար" } },
-  { id: "clothing", name: { en: "Hand-painted Clothing", ru: "Расписная одежда", hy: "Ձեռքով նկարված հագուստ" }, tagline: { en: "Art you can wear", ru: "Искусство, которое можно носить", hy: "Արվեստ, որը կարելի է կրել" } },
-  { id: "portraits", name: { en: "Portraits", ru: "Портреты", hy: "Դիմանկարներ" }, tagline: { en: "People and studies", ru: "Люди и наброски", hy: "Մարդիկ և էսքիզներ" } },
-  { id: "drawings", name: { en: "Drawings", ru: "Рисунки", hy: "Նկարներ" }, tagline: { en: "Studies in line and light", ru: "Линия, форма и свет", hy: "Գիծ, ձև և լույս" } },
-  { id: "landscapes", name: { en: "Landscapes", ru: "Пейзажи", hy: "Բնանկարներ" }, tagline: { en: "Places and open skies", ru: "Места и простор", hy: "Վայրեր և բաց երկինք" } },
-  { id: "oil", name: { en: "Paintings", ru: "Живопись", hy: "Գեղանկարներ" }, tagline: { en: "Colour and composition", ru: "Цвет и композиция", hy: "Գույն և հորինվածք" } },
+  {
+    id: "botanical",
+    name: {
+      en: "Botanical / Mixed Media",
+      ru: "Ботаника / Смешанная техника",
+      hy: "Բուսական / Խառը տեխնիկա",
+    },
+    tagline: {
+      en: "Nature in a new light",
+      ru: "Природа в новом свете",
+      hy: "Բնությունը նոր լույսի ներքո",
+    },
+  },
+  {
+    id: "cups",
+    name: { en: "Hand-painted Cups", ru: "Расписные чашки", hy: "Ձեռքով նկարված բաժակներ" },
+    tagline: {
+      en: "Art for everyday rituals",
+      ru: "Искусство для повседневных ритуалов",
+      hy: "Արվեստ՝ առօրյա ծեսերի համար",
+    },
+  },
+  {
+    id: "clothing",
+    name: { en: "Hand-painted Clothing", ru: "Расписная одежда", hy: "Ձեռքով նկարված հագուստ" },
+    tagline: {
+      en: "Art you can wear",
+      ru: "Искусство, которое можно носить",
+      hy: "Արվեստ, որը կարելի է կրել",
+    },
+  },
+  {
+    id: "portraits",
+    name: { en: "Portraits", ru: "Портреты", hy: "Դիմանկարներ" },
+    tagline: { en: "People and studies", ru: "Люди и наброски", hy: "Մարդիկ և էսքիզներ" },
+  },
+  {
+    id: "drawings",
+    name: { en: "Drawings", ru: "Рисунки", hy: "Նկարներ" },
+    tagline: { en: "Studies in line and light", ru: "Линия, форма и свет", hy: "Գիծ, ձև և լույս" },
+  },
+  {
+    id: "landscapes",
+    name: { en: "Landscapes", ru: "Пейзажи", hy: "Բնանկարներ" },
+    tagline: { en: "Places and open skies", ru: "Места и простор", hy: "Վայրեր և բաց երկինք" },
+  },
+  {
+    id: "oil",
+    name: { en: "Paintings", ru: "Живопись", hy: "Գեղանկարներ" },
+    tagline: { en: "Colour and composition", ru: "Цвет и композиция", hy: "Գույն և հորինվածք" },
+  },
 ];
 
 // Each list is one work. Repeated entries are alternate photographs of that work.
 const groups = {
   cups: [[1], [2], [3], [4], [6], [8], [9], [10], [11], [12], [13], [14, 15]],
   clothing: [[68], [76, 77]],
-  portraits: [[17], [18], [20], [21], [22], [23], [24], [25], [26], [28], [29], [30], [32], [34], [36], [51], [63], [92]],
-  drawings: [[16], [38], [39], [40, 41], [42], [43], [44], [45], [46, 47], [48], [49], [50], [52], [53], [54, 56], [55, 57], [59], [60], [61], [62], [64], [65], [66], [67], [69, 70], [71], [72], [73]],
+  portraits: [
+    [17],
+    [18],
+    [20],
+    [21],
+    [22],
+    [23],
+    [24],
+    [25],
+    [26],
+    [28],
+    [29],
+    [30],
+    [32],
+    [34],
+    [36],
+    [51],
+    [63],
+    [92],
+  ],
+  drawings: [
+    [16],
+    [38],
+    [39],
+    [40, 41],
+    [42],
+    [43],
+    [44],
+    [45],
+    [46, 47],
+    [48],
+    [49],
+    [50],
+    [52],
+    [53],
+    [54, 56],
+    [55, 57],
+    [59],
+    [60],
+    [61],
+    [62],
+    [64],
+    [65],
+    [66],
+    [67],
+    [69, 70],
+    [71],
+    [72],
+    [73],
+  ],
   landscapes: [[31], [74], [75]],
   oil: [[27], [33], [84], [85], [86], [87], [89], [90]],
   botanical: [[37], [80], [81]],
@@ -50,9 +142,11 @@ const describe = (category, serial) => ({
 });
 
 const sourceFiles = await fs.readdir(SOURCE);
-const fileByNumber = new Map(sourceFiles
-  .map((file) => [Number(path.parse(file).name), file])
-  .filter(([number, file]) => Number.isInteger(number) && /\.jpe?g$/i.test(file)));
+const fileByNumber = new Map(
+  sourceFiles
+    .map((file) => [Number(path.parse(file).name), file])
+    .filter(([number, file]) => Number.isInteger(number) && /\.jpe?g$/i.test(file)),
+);
 const destination = path.join(ROOT, "public", "assets", "artworks");
 await fs.mkdir(destination, { recursive: true });
 
@@ -86,7 +180,12 @@ for (const category of categories) {
       ...(featured.has(slug) ? { featured: true } : {}),
       images: { main: outputNames[0], details: outputNames.slice(1) },
       updated: "2026-10-29",
-      title: Object.fromEntries(Object.entries(prefix[category.id]).map(([locale, value]) => [locale, `${value} ${serial}`])),
+      title: Object.fromEntries(
+        Object.entries(prefix[category.id]).map(([locale, value]) => [
+          locale,
+          `${value} ${serial}`,
+        ]),
+      ),
       description: describe(category.id, serial),
     });
   }
@@ -94,14 +193,21 @@ for (const category of categories) {
 
 const actualNumbers = [...fileByNumber.keys()].sort((a, b) => a - b);
 const unassigned = actualNumbers.filter((number) => !assigned.includes(number));
-if (unassigned.length) throw new Error(`Photos not assigned to a category: ${unassigned.join(", ")}`);
+if (unassigned.length)
+  throw new Error(`Photos not assigned to a category: ${unassigned.join(", ")}`);
 
 const howto = [
   "Каталог и обработанные изображения собраны скриптом scripts/import-gallery.mjs.",
-  "Для следующего импорта передайте ему папку с нумерованными JPG/JPEG: node scripts/import-gallery.mjs \"путь/к/фото\".",
+  'Для следующего импорта передайте ему папку с нумерованными JPG/JPEG: node scripts/import-gallery.mjs "путь/к/фото".',
   "Скрипт проверяет, что каждое фото назначено ровно один раз, сжимает изображения в WebP и обновляет этот файл.",
   "После импорта запустите npm run build.",
   "Названия пока нейтральные и пронумерованы; можно заменить их на утверждённые названия работ.",
 ];
-await fs.writeFile(path.join(ROOT, "src", "data", "artworks.json"), `${JSON.stringify({ _howto: howto, categories, items }, null, 2)}\n`, "utf8");
-console.log(`Imported ${assigned.length} photographs into ${items.length} numbered artwork records.`);
+await fs.writeFile(
+  path.join(ROOT, "src", "data", "artworks.json"),
+  `${JSON.stringify({ _howto: howto, categories, items }, null, 2)}\n`,
+  "utf8",
+);
+console.log(
+  `Imported ${assigned.length} photographs into ${items.length} numbered artwork records.`,
+);
