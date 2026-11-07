@@ -52,6 +52,9 @@ const inquire = `${url(locale, "contact")}?subject=${subject}#contact-form`;
 
 const seoTitle = `${title} — ${field(cat.name, locale)} | ${SITE.name}`;
 const seoDesc = desc.length > 158 ? desc.slice(0, 157) + "…" : desc;
+const shareUrl = absolute(artworkUrl(locale, item.slug));
+const encodedShareUrl = encodeURIComponent(shareUrl);
+const encodedShareTitle = encodeURIComponent(seoTitle);
 
 const main = item.images?.main;
 const zoomSrc = main ? asset("artworks/" + main) : "";
@@ -150,19 +153,75 @@ const pad = (n: number) => String(n).padStart(2, "0");
               <span>{tr(locale, "artwork.inquire")}</span>
               <Icon name="arrow-right" />
             </a>
-            <button
-              class="link"
-              type="button"
-              data-share
-              aria-label={tr(locale, "artwork.share")}
+            <div
+              class="share-control"
+              data-share-control
             >
-              <Icon name="share" />
-              <span>{tr(locale, "artwork.share")}</span>
-            </button>
+              <button
+                class="link"
+                type="button"
+                data-share
+                aria-label={tr(locale, "artwork.share")}
+                aria-controls={`share-options-${item.slug}`}
+                aria-expanded="false"
+              >
+                <Icon name="share" />
+                <span>{tr(locale, "artwork.share")}</span>
+              </button>
+              <div
+                class="share-menu"
+                id={`share-options-${item.slug}`}
+                data-share-menu
+                role="group"
+                aria-label={tr(locale, "artwork.shareOptions")}
+                hidden
+              >
+                <p class="share-menu__title">{tr(locale, "artwork.shareOptions")}</p>
+                <button
+                  class="share-menu__item"
+                  type="button"
+                  data-share-copy
+                >
+                  {tr(locale, "artwork.copyLink")}
+                </button>
+                <a
+                  class="share-menu__item"
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodedShareUrl}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {tr(locale, "artwork.shareFacebook")}
+                </a>
+                <a
+                  class="share-menu__item"
+                  href={`https://wa.me/?text=${encodeURIComponent(`${seoTitle}\n${shareUrl}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {tr(locale, "artwork.shareWhatsApp")}
+                </a>
+                <a
+                  class="share-menu__item"
+                  href={`https://t.me/share/url?url=${encodedShareUrl}&text=${encodedShareTitle}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {tr(locale, "artwork.shareTelegram")}
+                </a>
+                <a
+                  class="share-menu__item"
+                  href={`mailto:?subject=${encodedShareTitle}&body=${encodeURIComponent(`${seoTitle}\n${shareUrl}`)}`}
+                >
+                  {tr(locale, "artwork.shareEmail")}
+                </a>
+              </div>
+            </div>
           </div>
           <p
             class="caption gold mt-xs"
             data-share-note
+            role="status"
+            aria-live="polite"
             hidden
           >
             {tr(locale, "artwork.linkCopied")}

@@ -263,28 +263,94 @@
 
   /* -------------------------------------------------------------- share */
   $$("[data-share]").forEach(function (btn) {
+    var control = btn.closest("[data-share-control]");
+    var menu = control && $("[data-share-menu]", control);
+    var note = $("[data-share-note]");
+    var noteTimer;
+
+    if (!control || !menu) return;
+
+    var setOpen = function (open, moveFocus) {
+      menu.hidden = !open;
+      btn.setAttribute("aria-expanded", String(open));
+      control.setAttribute("data-open", String(open));
+      if (open && moveFocus) {
+        var firstAction = $("[data-share-copy]", menu);
+        if (firstAction) firstAction.focus();
+      }
+    };
+
+    var showNote = function (message) {
+      if (!note) return;
+      window.clearTimeout(noteTimer);
+      note.textContent = message;
+      note.hidden = false;
+      noteTimer = window.setTimeout(function () {
+        note.hidden = true;
+      }, 2800);
+    };
+
+    var copyFallback = function (value) {
+      var field = document.createElement("textarea");
+      field.value = value;
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.opacity = "0";
+      document.body.appendChild(field);
+      field.select();
+      var copied = false;
+      try {
+        copied = document.execCommand("copy");
+      } catch (e) {}
+      field.remove();
+      return copied;
+    };
+
+    var copyLink = function () {
+      var value = location.href;
+      var copied = function () {
+        setOpen(false);
+        showNote(t.linkCopied || "Link copied");
+      };
+      var failed = function () {
+        if (copyFallback(value)) copied();
+        else showNote(t.linkCopyFailed || "Could not copy the link.");
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(value).then(copied, failed);
+      } else {
+        failed();
+      }
+    };
+
     on(btn, "click", function () {
-      var url = location.href;
-      var title = document.title;
-      if (navigator.share) {
-        navigator.share({ title: title, url: url }).catch(function () {});
+      var desktop = window.matchMedia("(min-width: 768px) and (pointer: fine)").matches;
+      if (desktop || !navigator.share) {
+        setOpen(menu.hidden, menu.hidden);
         return;
       }
-      var done = function () {
-        var prev = btn.getAttribute("aria-label");
-        btn.setAttribute("aria-label", t.linkCopied || "Link copied");
-        var note = $("[data-share-note]");
-        if (note) {
-          note.hidden = false;
-          setTimeout(function () {
-            note.hidden = true;
-          }, 2400);
-        }
-        setTimeout(function () {
-          btn.setAttribute("aria-label", prev);
-        }, 2400);
-      };
-      if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function () {});
+
+      navigator.share({ title: document.title, url: location.href }).catch(function (error) {
+        if (!error || error.name !== "AbortError") setOpen(true, true);
+      });
+    });
+
+    on($("[data-share-copy]", menu), "click", copyLink);
+    $$("a", menu).forEach(function (link) {
+      on(link, "click", function () {
+        setOpen(false);
+      });
+    });
+
+    on(document, "click", function (event) {
+      if (!control.contains(event.target)) setOpen(false);
+    });
+    on(document, "keydown", function (event) {
+      if (event.key === "Escape" && !menu.hidden) {
+        setOpen(false);
+        btn.focus();
+      }
     });
   });
 
